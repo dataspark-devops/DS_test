@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <lst name="responseHeader">
+    <bool name="zkConnected">true</bool>
+    <int name="status">0</int>
+    <int name="QTime">16</int>
+    <lst name="params">
+      <str name="q">*:*</str>
+      <str name="indent">on</str>
+      <str name="rows">50</str>
+      <str name="wt">xml</str>
+    </lst>
+  </lst>
+  <result name="response" numFound="40" start="0" maxScore="1.0">
+    <doc>
+      <str name="roi1_name_s">KEDIRI</str>
+      <double name="rev_thre_td">145028.0</double>
+      <double name="rev_td">1.1981168150656374E10</double>
+      <double name="vol_td">4.230477269302284E8</double>
+      <str name="roi1_id_s">KEDIRI</str>
+      <double name="vol_thre_td">5132.0</double>
+      <str name="id">KEDIRI</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">KUTAI KARTANEGARA</str>
+      <double name="rev_thre_td">65816.0</double>
+      <double name="rev_td">1.4999745948374872E10</double>
+      <double name="vol_td">4.974721118148002E8</double>
+      <str name="roi1_id_s">KUTAI_KARTANEGARA</str>
+      <double name="vol_thre_td">1956.0</double>
+      <str name="id">KUTAI_KARTANEGARA</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">BALIKPAPAN</str>
+      <double name="rev_thre_td">83842.0</double>
+      <double name="rev_td">1.0968021373641798E10</double>
+      <double name="vol_td">4.3529140450466007E8</double>
+      <str name="roi1_id_s">BALIKPAPAN</str>
+      <double name="vol_thre_td">2532.0</double>
+      <str name="id">BALIKPAPAN</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">BANYUWANGI</str>
+      <double name="rev_thre_td">48988.0</double>
+      <double name="rev_td">1.0624549323676258E10</double>
+      <double name="vol_td">3.3348193972064644E8</double>
+      <str name="roi1_id_s">BANYUWANGI</str>
+      <double name="vol_thre_td">1364.0</double>
+      <str name="id">BANYUWANGI</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">KARAWANG</str>
+      <double name="rev_thre_td">182020.0</double>
+      <double name="rev_td">1.7564732054226177E10</double>
+      <double name="vol_td">6.879307011152397E8</double>
+      <str name="roi1_id_s">KARAWANG</str>
+      <double name="vol_thre_td">5906.0</double>
+      <str name="id">KARAWANG</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">AMBON</str>
+      <double name="rev_thre_td">99442.0</double>
+      <double name="rev_td">1.1413159330748623E10</double>
+      <double name="vol_td">2.4523027326224416E8</double>
+      <str name="roi1_id_s">AMBON</str>
+      <double name="vol_thre_td">1796.0</double>
+      <str name="id">AMBON</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">DENPASAR</str>
+      <double name="rev_thre_td">345009.0</double>
+      <double name="rev_td">3.6606671357114914E10</double>
+      <double name="vol_td">1.7390966638563964E9</double>
+      <str name="roi1_id_s">DENPASAR</str>
+      <double name="vol_thre_td">12240.0</double>
+      <str name="id">DENPASAR</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">BANDUNG</str>
+      <double name="rev_thre_td">339430.0</double>
+      <double name="rev_td">6.812695338226794E10</double>
+      <double name="vol_td">2.6130670630597544E9</double>
+      <str name="roi1_id_s">BANDUNG</str>
+      <double name="vol_thre_td">10605.0</double>
+      <str name="id">BANDUNG</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">BANDA ACEH</str>
+      <double name="rev_thre_td">152037.0</double>
+      <double name="rev_td">1.2024989170077337E10</double>
+      <double name="vol_td">5.980255260659392E8</double>
+      <str name="roi1_id_s">BANDA_ACEH</str>
+      <double name="vol_thre_td">6057.0</double>
+      <str name="id">BANDA_ACEH</str>
+    </doc>
+    <doc>
+      <str name="roi1_name_s">CIREBON</str>
+      <double name="rev_thre_td">144189.0</double>
+      <double name="rev_td">1.6875904235482134E10</double>
+      <double name="vol_td">4.8310584035624516E8</double>
+      <str name="roi1_id_s">CIREBON</str>
+      <double name="vol_thre_td">4122.0</double>
+      <str name="id">CIREBON</str>
+    </doc>
+  </result>
+</response>

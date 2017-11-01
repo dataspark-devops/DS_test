@@ -1,0 +1,175 @@
+# transform BBC master and Cell master to top_roi_stats collection
+
+name: ds_transform_top_roi_stats
+
+# input arguments
+arguments:
+  - !argument
+    name: master_bbc_info
+    description: 
+    required: true
+    
+  - !argument
+    name: fixed_cell_master
+    description: 
+    required: true
+
+# output arguments
+  - !argument
+    name: output_path
+    description:
+    required: true
+    
+# main data source
+source:
+  !!com.dataspark.sources.TextFileSource
+    uri: !arg fixed_cell_master
+
+# pre-load master BBC info and process it    
+pre:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline: 
+      - !!com.dataspark.jobs.transformations.SideLoadJob
+        source: !!com.dataspark.sources.TextFileSource
+          uri: !arg master_bbc_info
+        name: filtered_bbc_info
+        job: !!com.dataspark.jobs.composite.RDDPipelineJob
+          pipeline:
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+              decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                delimiter: ','
+                inner: !!com.dataspark.codecs.MapDecoder
+                  fields:
+                    - !!com.dataspark.codecs.Field
+                      name: roi1_name_s
+                      index: 4
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: vol_thre_td
+                      index: 5
+                      decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                     
+                    - !!com.dataspark.codecs.Field
+                      name: rev_thre_td
+                      index: 6
+                      decoder: !!com.dataspark.codecs.DoubleDecoder {}
+            
+            # group by top roi name and calculate threshold for data and revenue               
+            - !!com.dataspark.jobs.transformations.MapReduceJob
+              keyFields: [roi1_name_s]
+              valueFieldReduceExp: 
+                "vol_thre_td" : '(Double)(v1.get("vol_thre_td")) + 0'
+                "rev_thre_td" : '(Double)(v1.get("rev_thre_td")) + 0'
+            
+            # generate top roi id using the name    
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+              enrichers: 
+                - !!com.dataspark.jobs.transformations.JavaExpression
+                  outputField: roi1_id_s
+                  inputFields: [roi1_name_s]
+                  exp: '((String)roi1_name_s).replace(" ", "_")'
+
+# main job - extract cell master info and process        
+job:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline:
+      - !!com.dataspark.jobs.transformations.ValueDecodingJob
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: roi1_name_s
+                index: 9
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                  
+              - !!com.dataspark.codecs.Field
+                name: data_2g_vol
+                index: 11
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                  
+              - !!com.dataspark.codecs.Field
+                name: data_3g_vol
+                index: 12
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                  
+              - !!com.dataspark.codecs.Field
+                name: data_4g_vol
+                index: 13
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+              
+              - !!com.dataspark.codecs.Field
+                name: rev_td
+                index: 14
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                
+      # aggregate 2G, 3G, 4G data and revenue based on roi name          
+      - !!com.dataspark.jobs.transformations.MapReduceJob
+        keyFields: [roi1_name_s]
+        valueFieldReduceExp:
+          "data_2g_vol" : '(Double)(v1.get("data_2g_vol")) + (Double)(v2.get("data_2g_vol"))'
+          "data_3g_vol" : '(Double)(v1.get("data_3g_vol")) + (Double)(v2.get("data_3g_vol"))'
+          "data_4g_vol" : '(Double)(v1.get("data_4g_vol")) + (Double)(v2.get("data_4g_vol"))'
+          "rev_td" : '(Double)(v1.get("rev_td")) + (Double)(v2.get("rev_td"))'
+          
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.JavaExpression
+            outputField: vol_td
+            inputFields: [data_2g_vol, data_3g_vol, data_4g_vol]
+            exp: '(Double)data_2g_vol + (Double)data_3g_vol + (Double)data_4g_vol'
+      
+      # perform right join of the two tables          
+      - !!com.dataspark.jobs.transformations.JoinJob
+        numPartitions: -1
+        sideSource: filtered_bbc_info
+        mainKeyField: roi1_name_s
+        sideKeyField: roi1_name_s
+        outputField: filtered_bbc_info
+        rightJoin: true
+        
+      # copy fields out
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+        - !!com.dataspark.jobs.transformations.FieldCopy
+          fields:
+            - [filtered_bbc_info.roi1_id_s, roi1_id_s]
+            - [filtered_bbc_info.roi1_name_s, roi1_name_s]
+            - [filtered_bbc_info.rev_thre_td, rev_thre_td]
+            - [filtered_bbc_info.vol_thre_td, vol_thre_td]
+      
+      # generate output  
+      - !!com.dataspark.jobs.transformations.MapTransformJob
+        whitelist: true
+        filterFields: [roi1_id_s,roi1_name_s,rev_thre_td,vol_thre_td,rev_td,vol_td]
+              
+      - !!com.dataspark.jobs.transformations.ValueEncodingJob
+        encoder: !!com.dataspark.codecs.MapEncoder
+          fields:
+            - !!com.dataspark.codecs.Field
+              name: roi1_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+            - !!com.dataspark.codecs.Field
+              name: roi1_name_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+            - !!com.dataspark.codecs.Field
+              name: rev_thre_td
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+            - !!com.dataspark.codecs.Field
+              name: vol_thre_td
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+            - !!com.dataspark.codecs.Field
+              name: rev_td
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+            - !!com.dataspark.codecs.Field
+              name: vol_td
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+              
+          inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+            delimiter: '|'                
+            
+      # write out to output path
+      - !!com.dataspark.jobs.outputs.TextFileOutputJob
+          uri: !arg output_path
+          consoleOutput: false

@@ -1,0 +1,14 @@
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_1|Voice MO|lat|lon|tac
+2016-06-01 00:21:44|imsi_1|msisdn_1|cell_1|Voice MO|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_1|Voice MO|lat|lon|tac
+2016-06-01 00:21:44|imsi_1|msisdn_1|cell_1|SMS|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_1|SMS|lat|lon|tac
+2016-06-01 00:21:44|imsi_1|msisdn_1|cell_1|SMS|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_2|Voice MO|lat|lon|tac
+2016-06-01 00:21:44|imsi_1|msisdn_1|cell_2|Voice MO|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_2|Voice MO|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_2|Voice MO|lat|lon|tac
+2016-06-01 00:21:44|imsi_1|msisdn_1|cell_2|SMS|lat|lon|tac
+2016-05-31 00:21:44|imsi_1|msisdn_1|cell_2|SMS|lat|lon|tac
+2016-07-01 00:21:44|imsi_1|msisdn_1|cell_1|SMS|lat|lon|tac
+2016-07-02 00:21:44|imsi_1|msisdn_1|cell_1|SMS|lat|lon|tac

@@ -1,0 +1,138 @@
+# ds_transform_device_information using Raw Device Information
+# author: ashutosh
+
+# application name
+name: ds_transform_device_information
+
+# input arguments
+arguments:
+    - !argument
+        name: input_path
+        description:
+        required: true
+
+    - !argument
+        name: output_path
+        description:
+        required: true
+        
+    - !argument
+        name: freq_band_mapping_path
+        description:
+        required: true        
+
+# data source
+source:
+    # direct streaming source from kafka cluster
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg input_path
+
+pre:
+    !!com.dataspark.jobs.composite.RDDParallelJob
+        jobs:
+            # get freqnecy bands mapping 
+            - !!com.dataspark.jobs.inputs.FileCacheJob
+                uri: !arg freq_band_mapping_path
+                name: freq_band_mapping_table
+                multiLined: true
+                keyField: band_name
+                valueField: band_code
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: band_name
+                                index: 0
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: band_code
+                                index: 1
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+
+# main processing jobs
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            # decode source data line by line
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: tac
+                                index: 0
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+
+                            - !!com.dataspark.codecs.Field
+                                name: bands
+                                index: 3
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+
+                            - !!com.dataspark.codecs.Field
+                                name: deviceType
+                                index: 4
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+
+            # enrich/transform data
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                    # apply customized operation on each record
+                    - !!com.dataspark.jobs.transformations.JavaExpression
+                        inputFields: [deviceType]
+                        outputField: [deviceType]
+                        exp: '(((String)deviceType) == null || ((String)deviceType).isEmpty() || ((String)deviceType).equalsIgnoreCase("null")) ? "Unknown" : deviceType '
+                        stopOnError: false
+
+                    - !!com.dataspark.jobs.transformations.JavaExpression
+                        inputFields: [deviceType]
+                        outputField: [deviceType]
+                        exp: '(((String)deviceType).equalsIgnoreCase("OTHER DEVICE")) ? "Other" : deviceType '
+                        stopOnError: false
+                        
+                    - !!com.dataspark.jobs.transformations.SplitAndMapLookup
+                        outputField: freq_bands
+                        source: freq_band_mapping_table
+                        inputField: bands
+                        delimiter: ','
+
+            # encoding fields into a string for output writing
+            - !!com.dataspark.jobs.transformations.ValueEncodingJob
+                stopOnError: false
+                reportErrors: true
+                name: "job"
+                encoder: !!com.dataspark.codecs.MapEncoder
+                    fields:
+                        - !!com.dataspark.codecs.Field
+                            name: tac
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                        - !!com.dataspark.codecs.Field
+                            name: freq_bands
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                        - !!com.dataspark.codecs.Field
+                            name: deviceType
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                    inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                        delimiter: '|'
+            
+            # put the data into desired number of partitions
+            - !!com.dataspark.jobs.transformations.RepartitionJob
+                partitions: 1
+                coalese: false
+
+            # write out to output path
+            - !!com.dataspark.jobs.outputs.TextFileOutputJob
+                uri: !arg output_path
+                consoleOutput: false
+
+

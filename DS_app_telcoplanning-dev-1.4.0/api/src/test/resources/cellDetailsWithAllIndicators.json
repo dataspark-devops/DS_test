@@ -1,0 +1,134 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "work",
+      "home",
+      "calls",
+      "sms",
+      "unique_people",
+      "payload",
+      "revenue",
+      "total_stay_duration",
+      "avg_stay_duration"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "2_2",
+      "3_3",
+      "6_6",
+      "7_7"
+    ]
+  },
+  "results": [
+    {
+      "work": 1,
+      "roiL2": "3601",
+      "siteId": "site_2",
+      "siteName": "site_2",
+      "roiL3": "3603031",
+      "lon": 2.0,
+      "id": "2_2",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 10.0,
+          "sms": 50.0,
+          "total_stay_duration": 3.3,
+          "cellId": "cell_21",
+          "avg_stay_duration": 3.3,
+          "network": "2G"
+        }
+      ],
+      "roiL4": "3603030011",
+      "lat": 2.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3602",
+      "siteId": "site_3",
+      "siteName": "site_3",
+      "roiL3": "3603032",
+      "lon": 3.0,
+      "id": "3_3",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 610.0,
+          "sms": 590.0,
+          "total_stay_duration": 0.0,
+          "cellId": "cell_31",
+          "avg_stay_duration": 0.0,
+          "network": "4G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 3.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3602",
+      "siteId": "site_6",
+      "siteName": "site_6",
+      "roiL3": "3603032",
+      "lon": 6.0,
+      "id": "6_6",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 6.0,
+          "sms": 87.0,
+          "total_stay_duration": 3.3,
+          "cellId": "cell_61",
+          "avg_stay_duration": 3.3,
+          "network": "2G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 6.0,
+      "home": 1
+    },
+    {
+      "work": 1,
+      "roiL2": "3603",
+      "siteId": "site_7",
+      "siteName": "site_7",
+      "roiL3": "3603033",
+      "lon": 7.0,
+      "id": "7_7",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 46.0,
+          "sms": 867.0,
+          "total_stay_duration": 12.7,
+          "cellId": "cell_71",
+          "avg_stay_duration": 12.7,
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030013",
+      "lat": 7.0,
+      "home": 1
+    }
+  ]
+}

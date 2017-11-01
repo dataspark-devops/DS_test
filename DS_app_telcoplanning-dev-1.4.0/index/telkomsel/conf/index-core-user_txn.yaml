@@ -1,0 +1,267 @@
+# index enriched user profile and user txn into solr
+
+name: index_user_txn
+
+# input arguments
+arguments:
+  - !argument
+    name: enriched_user_profile
+    description: 
+    required: true
+    
+  - !argument
+    name: aggregated_user_txn
+    description: 
+    required: true
+    
+  - !argument
+    name: multivalue_field_delimiter
+    description: 
+    required: true
+
+# output arguments
+  - !argument
+    name: output_user_txn_collection
+    description:
+    required: true
+    
+  - !argument
+    name: zkHost
+    description:
+    required: true
+    
+# main data source
+source:
+  !!com.dataspark.sources.TextFileSource
+    uri: !arg aggregated_user_txn
+    
+pre:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline: 
+      - !!com.dataspark.jobs.transformations.SideLoadJob
+        source: !!com.dataspark.sources.TextFileSource
+          uri: !arg enriched_user_profile
+        name: enriched_user_profile
+        job: !!com.dataspark.jobs.composite.RDDPipelineJob
+          pipeline:
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+              decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                delimiter: '\|'
+                inner: !!com.dataspark.codecs.MapDecoder
+                  fields:
+                    - !!com.dataspark.codecs.Field
+                      name: imsi_s
+                      index: 0
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: msisdn_s
+                      index: 1
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                    
+                    - !!com.dataspark.codecs.Field
+                      name: segment_broadband_ti
+                      index: 2
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: segment_arpu_ti
+                      index: 3
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: segment_los_ti
+                      index: 4
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: segment_loyalty_ti
+                      index: 5
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: segment_unsupervised_ti
+                      index: 6
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: revenue_data_td
+                      index: 7
+                      decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: volume_data_td
+                      index: 8
+                      decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: device_type_ti
+                      index: 9
+                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: freq_bands_s
+                      index: 10
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_roi1_name_s
+                      index: 11
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_roi2_id_s
+                      index: 12
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_roi3_id_s
+                      index: 13
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_roi4_id_s
+                      index: 14
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_site_id_s
+                      index: 15
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: work_roi1_name_s
+                      index: 16
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: work_roi2_id_s
+                      index: 17
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: work_roi3_id_s
+                      index: 18
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: work_roi4_id_s
+                      index: 19
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: work_site_id_s
+                      index: 20
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+job:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline:
+      - !!com.dataspark.jobs.transformations.ValueDecodingJob
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: msisdn_s
+                index: 0
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: cell_id_s
+                index: 1
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: week_num_ti
+                index: 2
+                decoder: !!com.dataspark.codecs.IntDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: sms_count_ti
+                index: 3
+                decoder: !!com.dataspark.codecs.IntDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: voice_mo_count_ti
+                index: 4
+                decoder: !!com.dataspark.codecs.IntDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: site_id_s
+                index: 5
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: networks_s
+                index: 6
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: stay_duration_td
+                index: 7
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}                
+
+              - !!com.dataspark.codecs.Field
+                name: roi1_id_s
+                index: 8
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              - !!com.dataspark.codecs.Field
+                name: roi2_id_s
+                index: 9
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              - !!com.dataspark.codecs.Field
+                name: roi3_id_s
+                index: 10
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              - !!com.dataspark.codecs.Field
+                name: roi4_id_s
+                index: 11
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+      - !!com.dataspark.jobs.transformations.JoinJob
+        sideSource: enriched_user_profile
+        mainKeyField: msisdn_s
+        sideKeyField: msisdn_s
+        outputField: customer_profile
+        leftJoin: true
+        
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.FieldCopy
+            fields: 
+            - [customer_profile.segment_broadband_ti, segment_broadband_ti]
+            - [customer_profile.segment_arpu_ti, segment_arpu_ti]
+            - [customer_profile.segment_los_ti, segment_los_ti]
+            - [customer_profile.segment_loyalty_ti, segment_loyalty_ti]
+            - [customer_profile.segment_unsupervised_ti, segment_unsupervised_ti]
+            - [customer_profile.revenue_data_td, revenue_data_td]
+            - [customer_profile.volume_data_td, volume_data_td]
+            - [customer_profile.device_type_ti, device_type_ti]
+            - [customer_profile.freq_bands_s, freq_bands_ss]
+            - [customer_profile.home_roi1_name_s, home_roi1_id_s]
+            - [customer_profile.home_roi2_id_s, home_roi2_id_s]
+            - [customer_profile.home_roi3_id_s, home_roi3_id_s]
+            - [customer_profile.home_roi4_id_s, home_roi4_id_s]
+            - [customer_profile.home_site_id_s, home_site_id_s]
+            - [customer_profile.work_roi1_name_s, work_roi1_id_s]
+            - [customer_profile.work_roi2_id_s, work_roi2_id_s]
+            - [customer_profile.work_roi3_id_s, work_roi3_id_s]
+            - [customer_profile.work_roi4_id_s, work_roi4_id_s]
+            - [customer_profile.work_site_id_s, work_site_id_s]
+            - [customer_profile.imsi_s, imsi_s]
+                
+      - !!com.dataspark.jobs.transformations.MapTransformJob
+        whitelist: true
+        filterFields: [imsi_s,msisdn_s,segment_broadband_ti,segment_arpu_ti,segment_los_ti,segment_loyalty_ti,segment_unsupervised_ti,revenue_data_td,volume_data_td,device_type_ti,freq_bands_ss,home_roi1_id_s,home_roi2_id_s,home_roi3_id_s,home_roi4_id_s,home_site_id_s,work_roi1_id_s,work_roi2_id_s,work_roi3_id_s,work_roi4_id_s,work_site_id_s,cell_id_s,week_num_ti,sms_count_ti,voice_mo_count_ti,stay_duration_td,site_id_s,networks_s,roi1_id_s,roi2_id_s,roi3_id_s,roi4_id_s]
+
+      - !!com.dataspark.jobs.solr.SolrNestedDocGenericIndexerJob
+        keyField: "msisdn_s"
+        solrCollection: !arg output_user_txn_collection
+        replaceMultiValues: true
+        zkHostString: !arg zkHost
+        partitions: 1000
+        parentFields: [imsi_s,msisdn_s,segment_broadband_ti,segment_arpu_ti,segment_los_ti,segment_loyalty_ti,segment_unsupervised_ti,revenue_data_td,volume_data_td,device_type_ti,freq_bands_ss,home_roi1_id_s,home_roi2_id_s,home_roi3_id_s,home_roi4_id_s,home_site_id_s,work_roi1_id_s,work_roi2_id_s,work_roi3_id_s,work_roi4_id_s,work_site_id_s]
+        childFields: [cell_id_s,week_num_ti,sms_count_ti,voice_mo_count_ti,stay_duration_td,site_id_s,networks_s,roi1_id_s,roi2_id_s,roi3_id_s,roi4_id_s]
+        multivalueFieldDelimiter: !arg multivalue_field_delimiter
+        

@@ -1,0 +1,16 @@
+cell_id, string, false
+lat, float, false
+lon, float, false
+network, string, false
+site_id, string, true
+site_name, string, true
+roi4_id, string, false
+roi3_id, string, false
+roi2_id, string, false
+roi1_id, string, false
+province_id, string, true
+vol_2g, double, true
+vol_3g, double, true
+vol_4g, double, true
+revenue, double, false
+lat_lon, string, false

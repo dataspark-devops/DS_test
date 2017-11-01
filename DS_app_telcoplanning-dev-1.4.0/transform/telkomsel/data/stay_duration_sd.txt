@@ -1,0 +1,4 @@
+msisdn_1|cell_1|22|300.0
+msisdn_1|cell_1|26|700.0
+msisdn_1|cell_2|22|500.0
+msisdn_1|cell_2|10|450.0

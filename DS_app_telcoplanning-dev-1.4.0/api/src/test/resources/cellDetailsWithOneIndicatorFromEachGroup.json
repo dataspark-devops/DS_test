@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "month",
+    "periodRange": [
+      {
+        "startDate": "2017-01-01T00:00:00+07:00",
+        "endDate": "2017-02-01T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "work",
+      "unique_people",
+      "revenue"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "2_2",
+      "3_3",
+      "8_8"
+    ]
+  },
+  "results": [
+    {
+      "work": 0,
+      "roiL2": "3601",
+      "siteId": "site_2",
+      "siteName": "site_2",
+      "roiL3": "3603031",
+      "lon": 2.0,
+      "id": "2_2",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "revenue": 8928088.4865522,
+          "unique_people": 1,
+          "cellId": "cell_21",
+          "network": "2G"
+        },
+        {
+          "revenue": 3083319.54701,
+          "unique_people": 1,
+          "cellId": "cell_22",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030011",
+      "lat": 2.0
+    },
+    {
+      "work": 1,
+      "roiL2": "3602",
+      "siteId": "site_3",
+      "siteName": "site_3",
+      "roiL3": "3603032",
+      "lon": 3.0,
+      "id": "3_3",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "revenue": 3083319.54701,
+          "unique_people": 1,
+          "cellId": "cell_31",
+          "network": "4G"
+        },
+        {
+          "revenue": 164398.812652,
+          "unique_people": 1,
+          "cellId": "cell_32",
+          "network": "4G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 3.0
+    },
+    {
+      "work": 1,
+      "roiL2": "3603",
+      "siteId": "site_8",
+      "siteName": "site_8",
+      "roiL3": "3603033",
+      "lon": 8.0,
+      "id": "8_8",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "revenue": 9965184.67408,
+          "unique_people": 1,
+          "cellId": "cell_81",
+          "network": "3G"
+        },
+        {
+          "revenue": 118495.82568,
+          "unique_people": 1,
+          "cellId": "cell_82",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030013",
+      "lat": 8.0
+    }
+  ]
+}

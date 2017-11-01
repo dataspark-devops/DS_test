@@ -1,0 +1,74 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "calls",
+      "work",
+      "revenue"
+    ],
+    "filterUser": null,
+    "filterDevice": {
+      "device_frequency_2g": [
+        "filter.deviceFrequency.2g.900"
+      ],
+      "device_frequency_3g": [
+        "filter.deviceFrequency.3g.900"
+      ],
+      "device_type": [
+        "filter.deviceType.smartphone",
+        "filter.deviceType.featurephone",
+        "filter.deviceType.basicphone"
+      ]
+    },
+    "filterCell": {
+      "cell_network": [
+        "filter.cellNetwork.4g",
+        "filter.cellNetwork.3g"
+      ]
+    },
+    "sites": [
+      "1_1",
+      "2_2",
+      "3_3",
+      "4_4",
+      "5_5",
+      "6_6",
+      "7_7",
+      "8_8",
+      "9_9",
+      "10_10"
+    ]
+  },
+  "results": [
+    {
+      "work": 0,
+      "roiL2": "3602",
+      "siteId": "site_4",
+      "siteName": "site_4",
+      "roiL3": "3603032",
+      "lon": 4.0,
+      "id": "4_4",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "calls": 60.0,
+          "cellId": "cell_41",
+          "network": "2G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 4.0
+    }
+  ]
+}

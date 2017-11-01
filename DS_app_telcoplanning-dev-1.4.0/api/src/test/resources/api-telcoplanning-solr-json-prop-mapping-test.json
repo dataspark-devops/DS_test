@@ -1,0 +1,343 @@
+{
+  "cell_collection": {
+    "site_info": [
+      {
+        "solrField": "lat_lon_s",
+        "jsonProperty": "id"
+      },
+      {
+        "solrField": "site_id_s",
+        "jsonProperty": "siteId"
+      },
+      {
+        "solrField": "site_name_s",
+        "jsonProperty": "siteName"
+      },
+      {
+        "solrField": "roi1_id_s",
+        "jsonProperty": "roiL1"
+      },
+      {
+        "solrField": "roi2_id_s",
+        "jsonProperty": "roiL2"
+      },
+      {
+        "solrField": "roi3_id_s",
+        "jsonProperty": "roiL3"
+      },
+      {
+        "solrField": "roi4_id_s",
+        "jsonProperty": "roiL4"
+      }
+    ],
+    "cell_info": [
+      {
+        "solrField": "cgi_s",
+        "jsonProperty": "cellId"
+      },
+      {
+        "solrField": "networks_s",
+        "jsonProperty": "network"
+      },
+      {
+        "solrField": "payload",
+        "jsonProperty": "payload",
+        "isIndicator": true,
+        "formula": "sum(vol_3g_td, vol_4g_td, vol_2g_td)",
+        "aggregationType": "sum"
+      },
+      {
+        "solrField": "rev_td",
+        "jsonProperty": "revenue",
+        "isIndicator": true,
+        "aggregationType": "sum"
+      },
+      {
+        "solrField": "vqi_ti",
+        "jsonProperty": "vqi",
+        "isIndicator": true,
+        "aggregationType": "median"
+      },
+      {
+        "solrField": "congestion_ti",
+        "jsonProperty": "congestion",
+        "isIndicator": true,
+        "aggregationType": "average"
+      }
+    ]
+  },
+  "roi_stats_collection": [
+    {
+      "solrField": "roi1_id_s",
+      "jsonProperty": "roiId",
+      "columnHeader": "ROI Id"
+    },
+    {
+      "solrField": "roi1_name_s",
+      "jsonProperty": "roiName",
+      "columnHeader": "ROI Name"
+    },
+    {
+      "solrField": "rev_td",
+      "jsonProperty": "revenue",
+      "columnHeader": "Revenue"
+    },
+    {
+      "solrField": "rev_thre_td",
+      "jsonProperty": "revenueThreshold",
+      "columnHeader": "Rev. Threshold (IDR)"
+    },
+    {
+      "solrField": "vol_td",
+      "jsonProperty": "volume",
+      "columnHeader": "Volume (GB)"
+    },
+    {
+      "solrField": "vol_thre_td",
+      "jsonProperty": "volumeThreshold",
+      "columnHeader": "Vol. Threshold (GB)"
+    }
+  ],
+  "user_txn_collection": {
+    "user_profile": [
+      {
+        "solrField": "imsi_s",
+        "jsonProperty": "IMSI",
+        "doLookup": false,
+        "index": 0
+      },
+      {
+        "solrField": "msisdn_s",
+        "jsonProperty": "MSISDN",
+        "doLookup": false,
+        "index": 1
+      },
+      {
+        "solrField": "segment_broadband_ti",
+        "jsonProperty": "Broadband Segment",
+        "doLookup": true,
+        "index": 2
+      },
+      {
+        "solrField": "segment_arpu_ti",
+        "jsonProperty": "ARPU Segment",
+        "doLookup": true,
+        "index": 3
+      },
+      {
+        "solrField": "segment_los_ti",
+        "jsonProperty": "LOS Segment",
+        "doLookup": true,
+        "index": 4
+      },
+      {
+        "solrField": "segment_loyalty_ti",
+        "jsonProperty": "Loyalty Segment",
+        "doLookup": true,
+        "index": 5
+      },
+      {
+        "solrField": "segment_unsupervised_ti",
+        "jsonProperty": "Unsupervised Segment",
+        "doLookup": true,
+        "index": 6
+      },
+      {
+        "solrField": "revenue_data_td",
+        "jsonProperty": "Data Revenue",
+        "doLookup": false,
+        "index": 7
+      },
+      {
+        "solrField": "volume_data_td",
+        "jsonProperty": "Data Volume",
+        "doLookup": false,
+        "index": 8
+      },
+      {
+        "solrField": "device_type_ti",
+        "jsonProperty": "Device Type",
+        "doLookup": true,
+        "index": 9
+      },
+      {
+        "solrField": "freq_bands_ss",
+        "jsonProperty": "Frequency Bands",
+        "doLookup": false,
+        "index": 10
+      },
+      {
+        "solrField": "home_roi1_id_s",
+        "jsonProperty": "Home BBC",
+        "doLookup": false,
+        "index": 11
+      },
+      {
+        "solrField": "home_roi2_id_s",
+        "jsonProperty": "Home Kabupaten",
+        "doLookup": false,
+        "index": 12
+      },
+      {
+        "solrField": "home_roi3_id_s",
+        "jsonProperty": "Home Kecamatan",
+        "doLookup": false,
+        "index": 13
+      },
+      {
+        "solrField": "home_roi4_id_s",
+        "jsonProperty": "Home Kelurahan",
+        "doLookup": false,
+        "index": 14
+      },
+      {
+        "solrField": "home_site_id_s",
+        "jsonProperty": "Home SiteId",
+        "doLookup": false,
+        "index": 15
+      },
+      {
+        "solrField": "work_roi1_id_s",
+        "jsonProperty": "Work BBC",
+        "doLookup": false,
+        "index": 16
+      },
+      {
+        "solrField": "work_roi2_id_s",
+        "jsonProperty": "Work Kabupaten",
+        "doLookup": false,
+        "index": 17
+      },
+      {
+        "solrField": "work_roi3_id_s",
+        "jsonProperty": "Work Kecamatan",
+        "doLookup": false,
+        "index": 18
+      },
+      {
+        "solrField": "work_roi4_id_s",
+        "jsonProperty": "Work Kelurahan",
+        "doLookup": false,
+        "index": 19
+      },
+      {
+        "solrField": "work_site_id_s",
+        "jsonProperty": "Work SiteId",
+        "doLookup": false,
+        "index": 20
+      }
+    ],
+    "user_txn": [
+      {
+        "solrField": "sms_count_ti",
+        "jsonProperty": "sms",
+        "isIndicator": true,
+        "formula": "sum(sms_count_ti)",
+        "facetName": "sms"
+      },
+      {
+        "solrField": "voice_mo_count_ti",
+        "jsonProperty": "calls",
+        "isIndicator": true,
+        "formula": "sum(voice_mo_count_ti)",
+        "facetName": "calls"
+      },
+      {
+        "solrField": "stay_duration_td",
+        "jsonProperty": "total_stay_duration",
+        "isIndicator": true,
+        "formula": "sum(stay_duration_td)",
+        "facetName": "total_stay_duration"
+      },
+      {
+        "solrField": "stay_duration_td",
+        "jsonProperty": "avg_stay_duration",
+        "isIndicator": true,
+        "formula": "sum(stay_duration_td)",
+        "facetName": "total_stay_duration"
+      }
+    ]
+  },
+  "site_info_header": [
+    {
+      "jsonProperty": "id",
+      "index": 0
+    },
+    {
+      "jsonProperty": "siteId",
+      "index": 1
+    },
+    {
+      "jsonProperty": "siteName",
+      "index": 2
+    },
+    {
+      "jsonProperty": "lat",
+      "index": 3
+    },
+    {
+      "jsonProperty": "lon",
+      "index": 4
+    },
+    {
+      "jsonProperty": "roiL1",
+      "index": 5
+    },
+    {
+      "jsonProperty": "roiL2",
+      "index": 6
+    },
+    {
+      "jsonProperty": "roiL3",
+      "index": 7
+    },
+    {
+      "jsonProperty": "roiL4",
+      "index": 8
+    },
+    {
+      "jsonProperty": "home",
+      "index": 9
+    },
+    {
+      "jsonProperty": "work",
+      "index": 10
+    },
+    {
+      "jsonProperty": "revenue",
+      "index": 11
+    },
+    {
+      "jsonProperty": "payload",
+      "index": 12
+    },
+    {
+      "jsonProperty": "sms",
+      "index": 13
+    },
+    {
+      "jsonProperty": "calls",
+      "index": 14
+    },
+    {
+      "jsonProperty": "unique_people",
+      "index": 15
+    },
+    {
+      "jsonProperty": "total_stay_duration",
+      "index": 16
+    },
+    {
+      "jsonProperty": "avg_stay_duration",
+      "index": 17
+    },
+    {
+      "jsonProperty": "vqi",
+      "index": 18
+    },
+    {
+      "jsonProperty": "congestion",
+      "index": 19
+    }
+  ]
+}

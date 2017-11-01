@@ -1,0 +1,4 @@
+35448105|2g.800|Featurephone
+86915902|3g.1900|Other Device
+35738305|3g.900,4g.2100|Smartphone
+35877504|3g.1900|Other Device

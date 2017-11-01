@@ -1,0 +1,114 @@
+{
+  "meta": {
+    "month": "04",
+    "year": "2017",
+    "indicators": [
+      {
+        "label": "Volume (GB)",
+        "key": "volume"
+      },
+      {
+        "label": "Revenue",
+        "key": "revenue"
+      },
+      {
+        "label": "Vol. Threshold (GB)",
+        "key": "volumeThreshold"
+      },
+      {
+        "label": "Rev. Threshold (IDR)",
+        "key": "revenueThreshold"
+      },
+      {
+        "label": "ROI Name",
+        "key": "roiName"
+      },
+      {
+        "label": "ROI Id",
+        "key": "roiId"
+      }
+    ]
+  },
+  "results": [
+    {
+      "volume": 423047726.9302284,
+      "revenue": 11981168150.656374,
+      "volumeThreshold": 5132.0,
+      "revenueThreshold": 145028.0,
+      "roiName": "KEDIRI",
+      "roiId": "KEDIRI"
+    },
+    {
+      "volume": 497472111.8148002,
+      "revenue": 14999745948.374872,
+      "volumeThreshold": 1956.0,
+      "revenueThreshold": 65816.0,
+      "roiName": "KUTAI KARTANEGARA",
+      "roiId": "KUTAI_KARTANEGARA"
+    },
+    {
+      "volume": 435291404.50466007,
+      "revenue": 10968021373.641798,
+      "volumeThreshold": 2532.0,
+      "revenueThreshold": 83842.0,
+      "roiName": "BALIKPAPAN",
+      "roiId": "BALIKPAPAN"
+    },
+    {
+      "volume": 333481939.72064644,
+      "revenue": 10624549323.676258,
+      "volumeThreshold": 1364.0,
+      "revenueThreshold": 48988.0,
+      "roiName": "BANYUWANGI",
+      "roiId": "BANYUWANGI"
+    },
+    {
+      "volume": 687930701.1152397,
+      "revenue": 17564732054.226177,
+      "volumeThreshold": 5906.0,
+      "revenueThreshold": 182020.0,
+      "roiName": "KARAWANG",
+      "roiId": "KARAWANG"
+    },
+    {
+      "volume": 245230273.26224416,
+      "revenue": 11413159330.748623,
+      "volumeThreshold": 1796.0,
+      "revenueThreshold": 99442.0,
+      "roiName": "AMBON",
+      "roiId": "AMBON"
+    },
+    {
+      "volume": 1739096663.8563964,
+      "revenue": 36606671357.114914,
+      "volumeThreshold": 12240.0,
+      "revenueThreshold": 345009.0,
+      "roiName": "DENPASAR",
+      "roiId": "DENPASAR"
+    },
+    {
+      "volume": 2613067063.0597544,
+      "revenue": 68126953382.26794,
+      "volumeThreshold": 10605.0,
+      "revenueThreshold": 339430.0,
+      "roiName": "BANDUNG",
+      "roiId": "BANDUNG"
+    },
+    {
+      "volume": 598025526.0659392,
+      "revenue": 12024989170.077337,
+      "volumeThreshold": 6057.0,
+      "revenueThreshold": 152037.0,
+      "roiName": "BANDA ACEH",
+      "roiId": "BANDA_ACEH"
+    },
+    {
+      "volume": 483105840.35624516,
+      "revenue": 16875904235.482134,
+      "volumeThreshold": 4122.0,
+      "revenueThreshold": 144189.0,
+      "roiName": "CIREBON",
+      "roiId": "CIREBON"
+    }
+  ]
+}

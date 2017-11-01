@@ -1,0 +1,2131 @@
+{
+  "id" : "nation",
+  "label" : "NATION",
+  "displayType" : "stats",
+  "aggregatableAt" : null,
+  "nodeValueIsA" : null,
+  "roiFilters" : {
+    "roiL0" : [ "*" ]
+  },
+  "children" : [ {
+    "id" : "BANYUMAS_PURWOKERTO_CILACAP",
+    "label" : "SITES:BANYUMAS PURWOKERTO CILACAP",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANYUMAS_PURWOKERTO_CILACAP" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANYUMAS_PURWOKERTO_CILACAP" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANYUMAS_PURWOKERTO_CILACAP" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANYUMAS_PURWOKERTO_CILACAP" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANYUMAS_PURWOKERTO_CILACAP" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "GORONTALO",
+    "label" : "SITES:GORONTALO",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "GORONTALO" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "GORONTALO" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "GORONTALO" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "GORONTALO" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "GORONTALO" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "GARUT",
+    "label" : "SITES:GARUT",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "GARUT" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "GARUT" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "GARUT" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "GARUT" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "GARUT" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "KARAWANG",
+    "label" : "SITES:KARAWANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "KARAWANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "KARAWANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "KARAWANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KARAWANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KARAWANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "JAYAPURA",
+    "label" : "SITES:JAYAPURA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "JAYAPURA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "JAYAPURA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "JAYAPURA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JAYAPURA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JAYAPURA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BANDUNG",
+    "label" : "SITES:BANDUNG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANDUNG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANDUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANDUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDUNG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDUNG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "CIREBON",
+    "label" : "SITES:CIREBON",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "CIREBON" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "CIREBON" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "CIREBON" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "CIREBON" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "CIREBON" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "METRO_LAMPUNG",
+    "label" : "SITES:METRO LAMPUNG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "METRO_LAMPUNG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "METRO_LAMPUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "METRO_LAMPUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "METRO_LAMPUNG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "METRO_LAMPUNG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "JABODETABEK",
+    "label" : "SITES:JABODETABEK",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "JABODETABEK" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "JABODETABEK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "JABODETABEK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JABODETABEK" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JABODETABEK" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "SURABAYA",
+    "label" : "SITES:SURABAYA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "SURABAYA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "SURABAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "SURABAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SURABAYA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SURABAYA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PASURUAN",
+    "label" : "SITES:PASURUAN",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PASURUAN" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PASURUAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PASURUAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PASURUAN" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PASURUAN" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PONTIANAK",
+    "label" : "SITES:PONTIANAK",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PONTIANAK" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PONTIANAK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PONTIANAK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PONTIANAK" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PONTIANAK" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PEKANBARU",
+    "label" : "SITES:PEKANBARU",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PEKANBARU" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PEKANBARU" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PEKANBARU" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PEKANBARU" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PEKANBARU" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "KUTAI_KARTANEGARA",
+    "label" : "SITES:KUTAI KARTANEGARA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "KUTAI_KARTANEGARA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "KUTAI_KARTANEGARA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "KUTAI_KARTANEGARA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KUTAI_KARTANEGARA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KUTAI_KARTANEGARA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "SEMARANG",
+    "label" : "SITES:SEMARANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "SEMARANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "SEMARANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "SEMARANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SEMARANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SEMARANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "MAKASSAR",
+    "label" : "SITES:MAKASSAR",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "MAKASSAR" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "MAKASSAR" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "MAKASSAR" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MAKASSAR" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MAKASSAR" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "AMBON",
+    "label" : "SITES:AMBON",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "AMBON" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "AMBON" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "AMBON" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "AMBON" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "AMBON" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PALEMBANG",
+    "label" : "SITES:PALEMBANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PALEMBANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PALEMBANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PALEMBANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALEMBANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALEMBANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "MALANG",
+    "label" : "SITES:MALANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "MALANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "MALANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "MALANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MALANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MALANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "MEDAN",
+    "label" : "SITES:MEDAN",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "MEDAN" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "MEDAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "MEDAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MEDAN" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MEDAN" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "JEMBER",
+    "label" : "SITES:JEMBER",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "JEMBER" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "JEMBER" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "JEMBER" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JEMBER" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "JEMBER" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PADANG",
+    "label" : "SITES:PADANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PADANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PADANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PADANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PADANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PADANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PALU",
+    "label" : "SITES:PALU",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PALU" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PALU" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PALU" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALU" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALU" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BANDAR_LAMPUNG",
+    "label" : "SITES:BANDAR LAMPUNG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANDAR_LAMPUNG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANDAR_LAMPUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANDAR_LAMPUNG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDAR_LAMPUNG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDAR_LAMPUNG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "KEDIRI",
+    "label" : "SITES:KEDIRI",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "KEDIRI" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "KEDIRI" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "KEDIRI" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KEDIRI" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "KEDIRI" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BATAM",
+    "label" : "SITES:BATAM",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BATAM" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BATAM" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BATAM" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BATAM" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BATAM" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "SURAKARTA_SRAGEN",
+    "label" : "SITES:SURAKARTA SRAGEN",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "SURAKARTA_SRAGEN" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "SURAKARTA_SRAGEN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "SURAKARTA_SRAGEN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SURAKARTA_SRAGEN" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SURAKARTA_SRAGEN" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BANJARMASIN",
+    "label" : "SITES:BANJARMASIN",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANJARMASIN" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANJARMASIN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANJARMASIN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANJARMASIN" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANJARMASIN" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "MANADO",
+    "label" : "SITES:MANADO",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "MANADO" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "MANADO" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "MANADO" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MANADO" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MANADO" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BALIKPAPAN",
+    "label" : "SITES:BALIKPAPAN",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BALIKPAPAN" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BALIKPAPAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BALIKPAPAN" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BALIKPAPAN" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BALIKPAPAN" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "SAMARINDA",
+    "label" : "SITES:SAMARINDA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "SAMARINDA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "SAMARINDA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "SAMARINDA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SAMARINDA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SAMARINDA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "PALANGKARAYA",
+    "label" : "SITES:PALANGKARAYA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "PALANGKARAYA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "PALANGKARAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "PALANGKARAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALANGKARAYA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "PALANGKARAYA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BLITAR_TULUNGAGUNG_TRENGGALEK",
+    "label" : "SITES:BLITAR TULUNGAGUNG TRENGGALEK",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BLITAR_TULUNGAGUNG_TRENGGALEK" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BLITAR_TULUNGAGUNG_TRENGGALEK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BLITAR_TULUNGAGUNG_TRENGGALEK" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BLITAR_TULUNGAGUNG_TRENGGALEK" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BLITAR_TULUNGAGUNG_TRENGGALEK" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "SUBANG",
+    "label" : "SITES:SUBANG",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "SUBANG" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "SUBANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "SUBANG" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SUBANG" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "SUBANG" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "TASIKMALAYA",
+    "label" : "SITES:TASIKMALAYA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "TASIKMALAYA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "TASIKMALAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "TASIKMALAYA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "TASIKMALAYA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "TASIKMALAYA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "MATARAM",
+    "label" : "SITES:MATARAM",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "MATARAM" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "MATARAM" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "MATARAM" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MATARAM" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "MATARAM" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "YOGYAKARTA",
+    "label" : "SITES:YOGYAKARTA",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "YOGYAKARTA" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "YOGYAKARTA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "YOGYAKARTA" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "YOGYAKARTA" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "YOGYAKARTA" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BANYUWANGI",
+    "label" : "SITES:BANYUWANGI",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANYUWANGI" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANYUWANGI" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANYUWANGI" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANYUWANGI" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANYUWANGI" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "DENPASAR",
+    "label" : "SITES:DENPASAR",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "DENPASAR" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "DENPASAR" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "DENPASAR" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "DENPASAR" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "DENPASAR" ]
+      },
+      "children" : [ ]
+    } ]
+  }, {
+    "id" : "BANDA_ACEH",
+    "label" : "SITES:BANDA ACEH",
+    "displayType" : "sites",
+    "aggregatableAt" : "roiL2",
+    "nodeValueIsA" : "bbc",
+    "roiFilters" : {
+      "roiL1" : [ "BANDA_ACEH" ]
+    },
+    "children" : [ {
+      "id" : "roiL2",
+      "label" : "STATS:KABUPATEN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL2",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL2" : [ "*" ],
+        "roiL1" : [ "BANDA_ACEH" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL3",
+      "label" : "STATS:KECAMATAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL3",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL3" : [ "*" ],
+        "roiL1" : [ "BANDA_ACEH" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL4",
+      "label" : "STATS:KELURAHAN",
+      "displayType" : "stats",
+      "aggregatableAt" : "roiL4",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDA_ACEH" ],
+        "roiL4" : [ "*" ]
+      },
+      "children" : [ ]
+    }, {
+      "id" : "roiL5",
+      "label" : "ALL SITES",
+      "displayType" : "sites",
+      "aggregatableAt" : "",
+      "nodeValueIsA" : null,
+      "roiFilters" : {
+        "roiL1" : [ "BANDA_ACEH" ]
+      },
+      "children" : [ ]
+    } ]
+  } ]
+}

@@ -1,0 +1,190 @@
+-- ------------------------------------------------------------ MODULES ------------------------------------------------------
+INSERT INTO MODULES (module_name,module_tz,module_perm) VALUES('telco-network-planning','Asia/Jakarta','PERM_TELCO_NETWORK_PLANNING');
+
+-- ------------------------------------------------------------ FILTER GROUPS ------------------------------------------------
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('filterUser', 'User', null);
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('threshold', 'Threshold', (select filter_group_id from filter_groups where filter_group_key='filterUser'));
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('segment', 'Segment', (select filter_group_id from filter_groups where filter_group_key='filterUser'));
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('filterDevice', 'Device', null);
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('device_frequencies', 'Device Frequencies', (select filter_group_id from filter_groups where filter_group_key='filterDevice'));
+INSERT INTO FILTER_GROUPS(filter_group_key, filter_group_label, filter_group_parent_id) VALUES ('filterCell', 'Cell', null);
+
+-- ------------------------------------------------------------ INTERVALS ------------------------------------------------------
+INSERT INTO INTERVALS (interval_key,interval_label,interval_perm) VALUES('week','Weekly','PERM_TNP_INTERVAL_WEEKLY');
+INSERT INTO INTERVALS (interval_key,interval_label,interval_perm) VALUES('month','Monthly','PERM_TNP_INTERVAL_MONTHLY');
+
+-- ------------------------------------------------------------ INTERVALS ------------------------------------------------------
+INSERT INTO MODULES_INTERVALS(module_id,interval_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select interval_id from intervals where interval_perm='PERM_TNP_INTERVAL_WEEKLY'));
+INSERT INTO MODULES_INTERVALS(module_id,interval_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select interval_id from intervals where interval_perm='PERM_TNP_INTERVAL_MONTHLY'));
+-- ------------------------------------------------------------ FILTERS ------------------------------------------------------
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('threshold_data_usage','Data Usage (GB)','PERM_TNP_FILTER_THRESHOLD_DATA_USAGE','range',(select filter_group_id from filter_groups where filter_group_key='threshold'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('threshold_data_arpu','Data ARPU (IDR)','PERM_TNP_FILTER_THRESHOLD_ARPU','range',(select filter_group_id from filter_groups where filter_group_key='threshold'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_vvip','VVIP','PERM_TNP_FILTER_SEGMENT_VVIP','single-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_arpu','ARPU','PERM_TNP_FILTER_SEGMENT_ARPU','multi-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_los','LOS','PERM_TNP_FILTER_SEGMENT_LOS','single-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_unsupervised','Unsupervised','PERM_TNP_FILTER_SEGMENT_UNSUPERVISED','single-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_loyalti','Loyalti','PERM_TNP_FILTER_SEGMENT_LOYALTI','single-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('segment_broadband','Broadband','PERM_TNP_FILTER_SEGMENT_BROADBAND','single-select',(select filter_group_id from filter_groups where filter_group_key='segment'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('device_type','Device Type','PERM_TNP_FILTER_DEVICE_TYPE','multi-select',(select filter_group_id from filter_groups where filter_group_key='filterDevice'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('device_frequency_2g','Device Frequency 2G','PERM_TNP_FILTER_DEVICE_FREQUENCY_2G','tag-cloud',(select filter_group_id from filter_groups where filter_group_key='device_frequencies'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('device_frequency_3g','Device Frequency 3G','PERM_TNP_FILTER_DEVICE_FREQUENCY_3G','tag-cloud',(select filter_group_id from filter_groups where filter_group_key='device_frequencies'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('device_frequency_4g','Device Frequency 4G','PERM_TNP_FILTER_DEVICE_FREQUENCY_4G','tag-cloud',(select filter_group_id from filter_groups where filter_group_key='device_frequencies'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('cell_network','Cell Network','PERM_TNP_FILTER_CELL_NETWORK','tag-cloud',(select filter_group_id from filter_groups where filter_group_key='filterCell'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('cell_vendor','Cell Vendor','PERM_TNP_FILTER_CELL_VENDOR','multi-select',(select filter_group_id from filter_groups where filter_group_key='filterCell'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('home_location','Home Location','PERM_TNP_FILTER_HOME_LOCATION','multi-select',(select filter_group_id from filter_groups where filter_group_key='filterUser'));
+INSERT INTO FILTERS (filter_key,filter_label,filter_perm,filter_ui_type,filter_group_id) VALUES('work_location','Work Location','PERM_TNP_FILTER_WORK_LOCATION','multi-select',(select filter_group_id from filter_groups where filter_group_key='filterUser'));
+
+-- ------------------------------------------------------------ FILTER VALUES ------------------------------------------------------
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='threshold_data_usage'),'filter.threshold.dataUsage','[0,50000]',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='threshold_data_arpu'),'filter.threshold.arpu','[0,2500000]',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_vvip'),'filter.segment.vvip.other','Other',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_vvip'),'filter.segment.vvip.vvip','VVIP',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.veryLow','Very Low','Usage <= 10.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.low','Low','10.000 < Usage <= 20.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.medium','Medium','20.000 < Usage <= 50.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.high','High','50.000 < Usage <= 120.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.veryHigh','Very High','120.000 < Usage <= 250.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_arpu'),'filter.segment.arpu.topUsage','Top Usage','Usage > 250.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.new','New','LoS <= 3 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.short','Short','3 Months < LoS < 6 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.medium','Medium','6 Months < LoS < 12 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.long','Long','12 Months < Los < 36 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.veryLong','Very Long','36 Months < LoS < 60 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.loyal','Loyal','LoS > 60 Months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_los'),'filter.segment.los.unknown','Unknown','Activation date 1970 or null');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.economic','Economic',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.massMarket','Mass Market',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.dormant','Dormant',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.priority','Priority',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.earlyAdopter','Early Adopter',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.promoSeeker','Promo Seeker',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.professional','Professional',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.smsLover','SMS Lover',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.new','New',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.returning','Returning',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_unsupervised'),'filter.segment.unsupervised.existing','Existing',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_loyalti'),'filter.segment.loyalti.mass','Mass','Revenue < 50.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_loyalti'),'filter.segment.loyalti.red','Red','50.000 < Revenue < 200.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_loyalti'),'filter.segment.loyalti.gold','Gold','200.000 < Revenue < 1.000.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_loyalti'),'filter.segment.loyalti.platinum','Platinum','Revenue > 1.000.000');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.accidentalUser','Accidental User','Data usage: < 0.5 Mb. Device type: Basic phone and Feature phone');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.promisingAccidentalUser','Promising Accidental User','Data usage: < 0.5 Mb. Device type: exclude Basic phone and Feature phone');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.freeRiders','Free Riders','Only have non chargeable package');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.deviceChanger','Device Changer','(Data user in current month + data capable device) ^ (Non data user n last month + non data capable device)');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.weekendTroopers','Weekend Troopers','Data user in current month. Trx on weekend > Trx on weekdays');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.nightOwl','Night Owl','Data user in current month. Have transaction at night (19-23) or midnight (01-05)');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.comeAndGo','Come & Go','Inconsistent user who use data in last 6 months');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.sleepingBeauty','Sleeping Beauty','Broadband revenue > 25K, data usage < 20 Mb');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.highFlayer','High Flayer','Data usage > 70 Mb');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.lowValueUser','Low Value User','Broadband revenue < 15K');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.theBlackberries','The Blackberries','Have Blackberry smartphone');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.xFiles','X Files','Unmapped segment');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='segment_broadband'),'filter.segment.broadband.undefined','Undefined','Untrack');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.smartphone','Smartphone',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.featurephone','Feature Phone',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.basicphone','Basic Phone',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.tablet','Tablet',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.modem','Modem',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.otherDevice','Other Devices',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_type'),'filter.deviceType.unknown','Unknown',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_2g'),'filter.deviceFrequency.2g.850','850 MHz','GSM 850');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_2g'),'filter.deviceFrequency.2g.900','900 MHz','GSM 900');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_2g'),'filter.deviceFrequency.2g.1800','1800 MHz','GSM 1800');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_3g'),'filter.deviceFrequency.3g.850','850 MHz','WCDMA FDD Band V');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_3g'),'filter.deviceFrequency.3g.900','900 MHz','WCDMA FDD Band VIII');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_3g'),'filter.deviceFrequency.3g.2100','2100 MHz','WCDMA FDD Band I');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.700','700 MHz','LTE FDD BAND 26');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.850','850 MHz','LTE FDD BAND 5');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.900','900 MHz','LTE FDD BAND 8');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.1800','1800 MHz','LTE FDD BAND 3');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.2100','2100 MHz','LTE FDD BAND 1');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='device_frequency_4g'),'filter.deviceFrequency.4g.2300','2300 MHz','LTE FDD BAND 40');
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_network'),'filter.cellNetwork.2g','2G',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_network'),'filter.cellNetwork.3g','3G',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_network'),'filter.cellNetwork.4g','4G',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_vendor'),'filter.cellVendor.nokia','NOKIA',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_vendor'),'filter.cellVendor.huawei','HUAWEI',null);
+INSERT INTO FILTER_VALUES (filter_id,filter_value_key,filter_value_label,filter_value_info) VALUES ((select filter_id from filters where filter_key='cell_vendor'),'filter.cellVendor.lg','LG',null);
+
+-- ------------------------------------------------------------ INDICATORS ------------------------------------------------------
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('calls','Call','PERM_TNP_INDICATOR_CALL');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('sms','SMS','PERM_TNP_INDICATOR_SMS');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('payload','Payload','PERM_TNP_INDICATOR_PAYLOAD');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('revenue','Revenue','PERM_TNP_INDICATOR_REVENUE');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('home','Home','PERM_TNP_INDICATOR_HOME');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('work','Work','PERM_TNP_INDICATOR_WORK');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('unique_people','Unique People','PERM_TNP_INDICATOR_UNIQUE_PPL');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('total_stay_duration','Total Stay Duration','PERM_TNP_STAY_DURATION');
+INSERT INTO INDICATORS (indicator_key,indicator_label,indicator_perm) VALUES('avg_stay_duration','Average Stay Duration','PERM_TNP_AVG_STAY_DUARTION');
+
+-- ------------------------------------------------------------ ROI LEVELS ------------------------------------------------------
+INSERT INTO ROI_LEVELS (roi_level_key,roi_level_label,roi_level_perm,roi_level_order) VALUES ('roiL1','BBC','PERM_TNP_ROI_BBC',1);
+INSERT INTO ROI_LEVELS (roi_level_key,roi_level_label,roi_level_perm,roi_level_order) VALUES ('roiL2','Kabupaten','PERM_TNP_ROI_KABUPATEN',2);
+INSERT INTO ROI_LEVELS (roi_level_key,roi_level_label,roi_level_perm,roi_level_order) VALUES ('roiL3','Kecamatan','PERM_TNP_ROI_KECAMATAN',3);
+INSERT INTO ROI_LEVELS (roi_level_key,roi_level_label,roi_level_perm,roi_level_order) VALUES ('roiL4','Kelurahan','PERM_TNP_ROI_KELURAHAN',4);
+INSERT INTO ROI_LEVELS (roi_level_key,roi_level_label,roi_level_perm,roi_level_order) VALUES ('roiL5','All Sites','PERM_TNP_ROI_ALL_SITES',5);
+
+-- ------------------------------------------------------------ MODULES_FILTER_GROUPS ------------------------------------------------------
+INSERT INTO MODULES_FILTER_GROUPS(module_id,filter_group_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select filter_group_id from filter_groups where filter_group_key='filterUser'));
+INSERT INTO MODULES_FILTER_GROUPS(module_id,filter_group_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select filter_group_id from filter_groups where filter_group_key='filterDevice'));
+INSERT INTO MODULES_FILTER_GROUPS(module_id,filter_group_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select filter_group_id from filter_groups where filter_group_key='filterCell'));
+
+-- ------------------------------------------------------------ MODULES_INDICATORS ------------------------------------------------------
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='calls'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='sms'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='payload'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='revenue'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='home'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='work'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='unique_people'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='total_stay_duration'));
+INSERT INTO MODULES_INDICATORS(module_id,indicator_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select indicator_id from indicators where indicator_key='avg_stay_duration'));
+
+-- ------------------------------------------------------------ MODULES_ROI_LEVELS ------------------------------------------------------
+INSERT INTO MODULES_ROI_LEVELS(module_id,roi_level_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select roi_level_id from roi_levels where roi_level_key='roiL1'));
+INSERT INTO MODULES_ROI_LEVELS(module_id,roi_level_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select roi_level_id from roi_levels where roi_level_key='roiL2'));
+INSERT INTO MODULES_ROI_LEVELS(module_id,roi_level_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select roi_level_id from roi_levels where roi_level_key='roiL3'));
+INSERT INTO MODULES_ROI_LEVELS(module_id,roi_level_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select roi_level_id from roi_levels where roi_level_key='roiL4'));
+INSERT INTO MODULES_ROI_LEVELS(module_id,roi_level_id) VALUES((select module_id from modules where module_name='telco-network-planning'),(select roi_level_id from roi_levels where roi_level_key='roiL5'));
+
+-- ------------------------------------------------------------ ROI VALUES ------------------------------------------------------
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'GORONTALO','Gorontalo','PERM_TNP_ROI_BBC_GORONTALO');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANYUMAS_PURWOKERTO_CILACAP','Banyumas Purwokerto Cilacap','PERM_TNP_ROI_BBC_BANYUMAS_PURWOKERTO_CILACAP');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'GARUT','Garut','PERM_TNP_ROI_BBC_GARUT');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'KARAWANG','Karawang','PERM_TNP_ROI_BBC_KARAWANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'JAYAPURA','Jayapura','PERM_TNP_ROI_BBC_JAYAPURA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANDUNG','Bandung','PERM_TNP_ROI_BBC_BANDUNG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'CIREBON','Cirebon','PERM_TNP_ROI_BBC_CIREBON');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BLITAR_TULUNGAGUNG_TRENGGALEK','Blitar Tulungagung Trenggalek','PERM_TNP_ROI_BBC_BLITAR_TULUNGAGUNG_TRENGGALEK');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'JABODETABEK','Jabodetabek','PERM_TNP_ROI_BBC_JABODETABEK');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'SURABAYA','Surabaya','PERM_TNP_ROI_BBC_SURABAYA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PASURUAN','Pasuruan','PERM_TNP_ROI_BBC_PASURUAN');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PONTIANAK','Pontianak','PERM_TNP_ROI_BBC_PONTIANAK');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PEKANBARU','Pekanbaru','PERM_TNP_ROI_BBC_PEKANBARU');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'SEMARANG','Semarang','PERM_TNP_ROI_BBC_SEMARANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'MAKASSAR','Makassar','PERM_TNP_ROI_BBC_MAKASSAR');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'AMBON','Ambon','PERM_TNP_ROI_BBC_AMBON');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANDA_ACEH','Banda Aceh','PERM_TNP_ROI_BBC_BANDA_ACEH');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANDAR_LAMPUNG','Bandar Lampung','PERM_TNP_ROI_BBC_BANDAR_LAMPUNG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PALEMBANG','Palembang','PERM_TNP_ROI_BBC_PALEMBANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'MALANG','Malang','PERM_TNP_ROI_BBC_MALANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'MEDAN','Medan','PERM_TNP_ROI_BBC_MEDAN');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'JEMBER','Jember','PERM_TNP_ROI_BBC_JEMBER');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PADANG','Padang','PERM_TNP_ROI_BBC_PADANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PALU','Palu','PERM_TNP_ROI_BBC_PALU');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'KEDIRI','Kediri','PERM_TNP_ROI_BBC_KEDIRI');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BATAM','Batam','PERM_TNP_ROI_BBC_BATAM');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANJARMASIN','Banjarmasin','PERM_TNP_ROI_BBC_BANJARMASIN');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'MANADO','Manado','PERM_TNP_ROI_BBC_MANADO');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BALIKPAPAN','Balikpapan','PERM_TNP_ROI_BBC_BALIKPAPAN');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'SURAKARTA','Surakarta Sragen','PERM_TNP_ROI_BBC_SURAKARTA_SRAGEN');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'SAMARINDA','Samarinda','PERM_TNP_ROI_BBC_SAMARINDA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'PALANGKARAYA','Palangkaraya','PERM_TNP_ROI_BBC_PALANGKARAYA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'SUBANG','Subang','PERM_TNP_ROI_BBC_SUBANG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'TASIKMALAYA','Tasikmalaya','PERM_TNP_ROI_BBC_TASIKMALAYA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'MATARAM','Mataram','PERM_TNP_ROI_BBC_MATARAM');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'YOGYAKARTA','Yogyakarta','PERM_TNP_ROI_BBC_YOGYAKARTA');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'BANYUWANGI','Banyuwangi','PERM_TNP_ROI_BBC_BANYUWANGI');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'METRO_LAMPUNG','Metro Lampung','PERM_TNP_ROI_BBC_METRO_LAMPUNG');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'DENPASAR','Denpasar','PERM_TNP_ROI_BBC_DENPASAR');
+INSERT INTO ROI_VALUES(roi_level_id,roi_value_key,roi_value_label,roi_value_perm) VALUES ((select roi_level_id from roi_levels where roi_level_key='roiL1'),'KUTAI_KARTANEGARA','Kutai Kartanegara','PERM_TNP_ROI_BBC_KUTAI_KARTANEGARA');

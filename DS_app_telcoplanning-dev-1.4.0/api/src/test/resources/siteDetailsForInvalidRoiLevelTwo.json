@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL2": [
+        "3600"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "home"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": null,
+    "order": [
+      "id",
+      "siteId",
+      "siteName",
+      "lat",
+      "lon",
+      "roiL1",
+      "roiL2",
+      "roiL3",
+      "roiL4",
+      "home",
+      "work",
+      "revenue",
+      "payload",
+      "sms",
+      "calls",
+      "unique_people",
+      "total_stay_duration",
+      "avg_stay_duration",
+      "vqi",
+      "congestion"
+    ]
+  },
+  "results": []
+}

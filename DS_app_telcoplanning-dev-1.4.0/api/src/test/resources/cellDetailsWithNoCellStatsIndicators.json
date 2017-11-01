@@ -1,0 +1,109 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "home",
+      "work",
+      "payload",
+      "revenue"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "3_3",
+      "5_5",
+      "9_9",
+      "10_10"
+    ]
+  },
+  "results": [
+    {
+      "work": 1,
+      "roiL2": "3604",
+      "siteId": "site_10",
+      "siteName": "site_10",
+      "roiL3": "3603034",
+      "lon": 10.0,
+      "id": "10_10",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "cellId": "cell_101",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 10.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3602",
+      "siteId": "site_3",
+      "siteName": "site_3",
+      "roiL3": "3603032",
+      "lon": 3.0,
+      "id": "3_3",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "cellId": "cell_31",
+          "network": "4G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 3.0,
+      "home": 1
+    },
+    {
+      "work": 1,
+      "roiL2": "3602",
+      "siteId": "site_5",
+      "siteName": "site_5",
+      "roiL3": "3603032",
+      "lon": 5.0,
+      "id": "5_5",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "cellId": "cell_51",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 5.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3604",
+      "siteId": "site_9",
+      "siteName": "site_9",
+      "roiL3": "3603034",
+      "lon": 9.0,
+      "id": "9_9",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "cellId": "cell_91",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 9.0,
+      "home": 1
+    }
+  ]
+}

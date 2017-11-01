@@ -1,0 +1,95 @@
+# transform footfall into stay duration per IMSI per cell tower.
+
+name: ds_transform_footfall_to_stay_duration
+
+# input arguments
+arguments:
+- !argument
+  name: footfall_per_imsi_per_cell
+  description:
+  required: true
+
+# output parameters
+- !argument
+  name: stay_duration_per_imsi_per_cell
+  description:
+  required: true
+  
+# main data source
+source:
+  !!com.dataspark.sources.TextFileSource
+    uri: !arg footfall_per_imsi_per_cell
+    
+job:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline:
+      - !!com.dataspark.jobs.transformations.ValueDecodingJob
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: imsi_s
+                index: 0
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: cell_id_s
+                index: 1
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: time_in_ts
+                index: 2
+                decoder: !!com.dataspark.codecs.DateTimeDecoder
+                  format: "yyyy-MM-dd HH:mm:ss"
+                
+              - !!com.dataspark.codecs.Field
+                name: time_out_ts
+                index: 3
+                decoder: !!com.dataspark.codecs.DateTimeDecoder
+                  format: "yyyy-MM-dd HH:mm:ss"
+                                 
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.GetWeekNumber
+            outputField: week_num_s
+            inputField: time_in_ts
+            
+          - !!com.dataspark.jobs.transformations.GetStayDurationInMinutes
+            outputField: stay_duration
+            inputFields: [time_in_ts, time_out_ts]
+            
+      - !!com.dataspark.jobs.transformations.MapReduceJob
+        keyFields: [imsi_s,cell_id_s,week_num_s]
+        valueFieldReduceExp:
+          "stay_duration" : ' (Double)(v1.get("stay_duration")) + (Double)(v2.get("stay_duration")) '
+          
+      - !!com.dataspark.jobs.transformations.ValueEncodingJob
+        stopOnError: false
+        reportErrors: true
+        name: 
+        encoder: !!com.dataspark.codecs.MapEncoder
+          fields:           
+            - !!com.dataspark.codecs.Field
+              name: imsi_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}    
+              
+            - !!com.dataspark.codecs.Field
+              name: cell_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: week_num_s
+              encoder: !!com.dataspark.codecs.IntEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: stay_duration
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+          
+          inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+            delimiter: '|'
+      
+      - !!com.dataspark.jobs.outputs.TextFileOutputJob
+        uri: !arg stay_duration_per_imsi_per_cell
+        consoleOutput: false

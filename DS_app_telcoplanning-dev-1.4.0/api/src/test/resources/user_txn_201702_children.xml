@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <str name="cell_id_s">cell_151</str>
+    <str name="site_id_s">1_1</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3601</str>
+    <str name="roi3_id_s">3603031</str>
+    <str name="roi4_id_s">3603030011</str>
+    <str name="networks_s">3G</str>
+    <int name="sms_count_ti">100</int>
+    <int name="voice_mo_count_ti">20</int>
+    <int name="week_num_ti">5</int>
+    <double name="stay_duration_td">100.0</double>
+    <str name="id">id_1</str>
+  </doc>
+
+  <doc>
+    <str name="cell_id_s">cell_152</str>
+    <str name="site_id_s">1_1</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3601</str>
+    <str name="roi3_id_s">3603031</str>
+    <str name="roi4_id_s">3603030011</str>
+    <str name="networks_s">2G</str>
+    <int name="sms_count_ti">10</int>
+    <int name="voice_mo_count_ti">10</int>
+    <int name="week_num_ti">5</int>
+    <double name="stay_duration_td">140.0</double>
+    <str name="id">id_2</str>
+  </doc>
+
+  <doc>
+    <str name="cell_id_s">cell_251</str>
+    <str name="site_id_s">2_2</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3601</str>
+    <str name="roi3_id_s">3603031</str>
+    <str name="roi4_id_s">3603030011</str>
+    <str name="networks_s">2G</str>
+    <int name="sms_count_ti">50</int>
+    <int name="voice_mo_count_ti">10</int>
+    <int name="week_num_ti">5</int>
+    <double name="stay_duration_td">340.0</double>
+    <str name="id">id_3</str>
+  </doc>
+
+  <doc>
+    <str name="cell_id_s">cell_262</str>
+    <str name="site_id_s">2_2</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3601</str>
+    <str name="roi3_id_s">3603031</str>
+    <str name="roi4_id_s">3603030011</str>
+    <str name="networks_s">4G</str>
+    <int name="sms_count_ti">90</int>
+    <int name="voice_mo_count_ti">10</int>
+    <int name="week_num_ti">6</int>
+    <double name="stay_duration_td">300.0</double>
+    <str name="id">id_4</str>
+  </doc>
+
+  <doc>
+    <str name="cell_id_s">cell_361</str>
+    <str name="site_id_s">3_3</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3602</str>
+    <str name="roi3_id_s">3603032</str>
+    <str name="roi4_id_s">3603030012</str>
+    <str name="networks_s">3G</str>
+    <int name="sms_count_ti">590</int>
+    <int name="voice_mo_count_ti">610</int>
+    <int name="week_num_ti">6</int>
+    <double name="stay_duration_td">200.0</double>
+    <str name="id">id_5</str>
+  </doc>
+
+  <doc>
+    <str name="cell_id_s">cell_352</str>
+    <str name="site_id_s">3_3</str>
+    <str name="roi1_id_s">JABODETABEK</str>
+    <str name="roi2_id_s">3602</str>
+    <str name="roi3_id_s">3603032</str>
+    <str name="roi4_id_s">3603030012</str>
+    <str name="networks_s">2G</str>
+    <int name="sms_count_ti">930</int>
+    <int name="voice_mo_count_ti">310</int>
+    <int name="week_num_ti">5</int>
+    <double name="stay_duration_td">150.0</double>
+    <str name="id">id_6</str>
+  </doc>
+
+  <commit waitSearcher="false" />
+</add>

@@ -1,0 +1,109 @@
+# ds_transform_cell_master using Cell Master Information
+# author: ashutosh
+
+# application name
+name: ds_index_cell_master
+
+# input arguments
+arguments:
+    - !argument
+        name: input_path
+        description:
+        required: true
+
+    - !argument
+        name: collection
+        description: collection name
+        required: true
+    - !argument
+        name: zk
+        description: zookeeper
+        required: true
+        
+# data source
+source:
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg input_path
+
+# main processing jobs
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            # decode source data line by line
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: cgi_s
+                                index: 0
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: networks_s
+                                index: 3
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: site_name_s
+                                index: 4
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi4_id_s
+                                index: 5
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi3_id_s
+                                index: 6
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi2_id_s
+                                index: 7
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi1_id_s
+                                index: 8
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: lat_lon_s
+                                index: 9
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true                                    
+                                    
+            # enrich/transform data
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                    - !!com.dataspark.jobs.transformations.FormattedStringEnricher
+                        inputFields: [cgi_s, roi1_id_s]
+                        outputField: cgi_roi1_id_s
+                        targetFormat: '%s_%s'
+                        
+                    - !!com.dataspark.jobs.transformations.FieldCopy
+                      fields: 
+                      - [site_name_s, site_id_s]
+                        
+            - !!com.dataspark.jobs.transformations.MapTransformJob
+                whitelist: true
+                filterFields: [cgi_roi1_id_s,cgi_s,lat_lon_s,networks_s,site_name_s,site_id_s,roi4_id_s,roi3_id_s,roi2_id_s,roi1_id_s]
+                        
+            - !!com.dataspark.jobs.outputs.SolrOutputJob
+                keyField: "cgi_roi1_id_s"
+                solrCollection: !arg collection
+                zkHostString: !arg zk
+                replaceMultiValues: true
+                partitions: 100
+                upsert: true                        

@@ -1,0 +1,116 @@
+# application name
+name: index_core_cell_master
+
+# input arguments
+arguments:
+    - !argument
+        name: fixed_cell_master
+        description:
+        required: true
+        
+    - !argument
+        name: top_roi_name_id_map
+        description:
+        required: true
+
+      # output arguments
+    - !argument
+      name: output_top_roi_collection
+      description:
+      required: true
+      
+    - !argument
+      name: zkHost
+      description:
+      required: true
+      
+# data source
+source:
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg fixed_cell_master
+
+# pre-load some data sources
+pre:
+  !!com.dataspark.jobs.composite.RDDParallelJob
+    jobs:
+      - !!com.dataspark.jobs.inputs.FileCacheJob
+        uri: !arg top_roi_name_id_map
+        name: roi_info
+        multiLined: true
+        keyField: roi_id
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: roi_id
+                index: 0
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+        
+              - !!com.dataspark.codecs.Field
+                name: roi_name
+                index: 1
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+       
+# main processing jobs
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            # decode source data line by line
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                      decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                        delimiter: '\|'
+                        inner: !!com.dataspark.codecs.MapDecoder
+                          fields:
+                            - !!com.dataspark.codecs.Field
+                              name: cell_id
+                              index: 0
+                              decoder: !!com.dataspark.codecs.StringDecoder {} 
+                              
+                            - !!com.dataspark.codecs.Field
+                              name: roi1_id_s
+                              index: 8
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                              
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                  - !!com.dataspark.jobs.transformations.Put
+                    values:
+                     cell_num: "1"
+                     
+                  - !!com.dataspark.jobs.transformations.Lookup
+                    outputField: cell_count_ti
+                    inputField: cell_num
+                    defaultValue: 0
+                    values:
+                      "1": 1
+                      
+            - !!com.dataspark.jobs.transformations.MapReduceJob
+              keyFields: [roi1_id_s]
+              valueFieldReduceExp:
+                "cell_count_ti" : ' (Integer)(v1.get("cell_count_ti")) + (Integer)(v2.get("cell_count_ti")) '
+                
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+              enrichers: 
+              - !!com.dataspark.jobs.transformations.SimpleMapLookup
+                outputField: roi_name_info
+                source: roi_info
+                inputField: roi1_id_s
+              
+              - !!com.dataspark.jobs.transformations.FieldCopy
+                    fields: 
+                    - [roi_name_info.roi_name, roi1_name_s]
+
+            - !!com.dataspark.jobs.transformations.MapTransformJob
+                whitelist: true
+                filterFields: [roi1_id_s, cell_count_ti, roi1_name_s]
+                        
+            - !!com.dataspark.jobs.outputs.SolrOutputJob
+                keyField: "roi1_id_s"
+                solrCollection: !arg output_top_roi_collection
+                zkHostString: !arg zkHost
+                replaceMultiValues: true
+                partitions: 100
+                upsert: true  
+                                
+                                        

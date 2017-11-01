@@ -1,0 +1,122 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "home",
+      "work",
+      "calls",
+      "sms",
+      "unique_people"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "1_1",
+      "8_8",
+      "9_9",
+      "10_10"
+    ]
+  },
+  "results": [
+    {
+      "work": 0,
+      "roiL2": "3604",
+      "siteId": "site_10",
+      "siteName": "site_10",
+      "roiL3": "3603034",
+      "lon": 10.0,
+      "id": "10_10",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 62.0,
+          "sms": 213.0,
+          "cellId": "cell_101",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 10.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3601",
+      "siteId": "site_1",
+      "siteName": "site_1",
+      "roiL3": "3603031",
+      "lon": 1.0,
+      "id": "1_1",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 20.0,
+          "sms": 100.0,
+          "cellId": "cell_11",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030011",
+      "lat": 1.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3603",
+      "siteId": "site_8",
+      "siteName": "site_8",
+      "roiL3": "3603033",
+      "lon": 8.0,
+      "id": "8_8",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 6.0,
+          "sms": 7.0,
+          "cellId": "cell_81",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030013",
+      "lat": 8.0,
+      "home": 1
+    },
+    {
+      "work": 0,
+      "roiL2": "3604",
+      "siteId": "site_9",
+      "siteName": "site_9",
+      "roiL3": "3603034",
+      "lon": 9.0,
+      "id": "9_9",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "unique_people": 1,
+          "calls": 60.0,
+          "sms": 23.0,
+          "cellId": "cell_91",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 9.0,
+      "home": 1
+    }
+  ]
+}

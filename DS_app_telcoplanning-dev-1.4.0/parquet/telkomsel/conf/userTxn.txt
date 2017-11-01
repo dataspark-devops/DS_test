@@ -1,0 +1,12 @@
+msisdn, string, false
+cell_id, string, false
+week_num, int, false
+sms_count, int, false
+call_count, int, false
+site_id, string, false
+network, string, false
+stay_duration, double, true
+roi1_id, string, false
+roi2_id, string, false
+roi3_id, string, false
+roi4_id, string, false

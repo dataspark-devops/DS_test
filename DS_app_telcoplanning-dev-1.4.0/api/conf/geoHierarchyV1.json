@@ -1,0 +1,37 @@
+{
+  "geoNodeType" : "ROI_LEVEL",
+  "geoNodeDepth" : "roiL0",
+  "displayType" : "STATS",
+  "aggregatableAt" : "roiL1",
+  "children" : [ {
+    "geoNodeType" : "ROI_VALUE",
+    "geoNodeDepth" : "roiL1",
+    "displayType" : "SITES",
+    "aggregatableAt" : "roiL2",
+    "children" : [ {
+      "geoNodeType" : "ROI_LEVEL",
+      "geoNodeDepth" : "roiL2",
+      "displayType" : "STATS",
+      "aggregatableAt" : "roiL2",
+      "children" : null
+    }, {
+      "geoNodeType" : "ROI_LEVEL",
+      "geoNodeDepth" : "roiL3",
+      "displayType" : "STATS",
+      "aggregatableAt" : "roiL3",
+      "children" : null
+    }, {
+      "geoNodeType" : "ROI_LEVEL",
+      "geoNodeDepth" : "roiL4",
+      "displayType" : "STATS",
+      "aggregatableAt" : "roiL4",
+      "children" : null
+    }, {
+      "geoNodeType" : "ROI_LEVEL",
+      "geoNodeDepth" : "roiL5",
+      "displayType" : "SITES",
+      "aggregatableAt" : null,
+      "children" : null
+    } ]
+  } ]
+}

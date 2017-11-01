@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<response>
+  <lst name="responseHeader">
+    <bool name="zkConnected">true</bool>
+    <int name="status">0</int>
+    <int name="QTime">1758</int>
+    <lst name="params">
+      <str name="q">*:*</str>
+      <str name="indent">true</str>
+      <str name="fq">id:*_JABODETABEK</str>
+      <str name="rows">20</str>
+      <str name="wt">xml</str>
+    </lst>
+  </lst>
+  <result name="response" numFound="130814" start="0" maxScore="1.0">
+    <doc>
+      <double name="rev_td">3766974.76283</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">156114.737832</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_1</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_1</str>
+      <str name="lat_lon_s">1_1</str>
+      <str name="cgi_s">cell_11</str>
+      <str name="id">cell_11_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3601</str>
+      <str name="roi3_id_s">3603031</str>
+      <str name="roi4_id_s">3603030011</str>
+    </doc>
+    <doc>
+      <double name="rev_td">6149691.91644</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_1</str>
+      <double name="vol_2g_td">33334.5946503</double>
+      <str name="site_id_s">site_1</str>
+      <str name="lat_lon_s">1_1</str>
+      <str name="cgi_s">cell_12</str>
+      <str name="id">cell_12_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3601</str>
+      <str name="roi3_id_s">3603031</str>
+      <str name="roi4_id_s">3603030011</str>
+    </doc>
+    <doc>
+      <double name="rev_td">8928088.4865522</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">28088.4865522</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_2</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_2</str>
+      <str name="lat_lon_s">2_2</str>
+      <str name="cgi_s">cell_21</str>
+      <str name="id">cell_21_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3601</str>
+      <str name="roi3_id_s">3603031</str>
+      <str name="roi4_id_s">3603030011</str>
+    </doc>
+    <doc>
+      <double name="rev_td">3083319.54701</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_2</str>
+      <double name="vol_2g_td">30879.54701</double>
+      <str name="site_id_s">site_2</str>
+      <str name="lat_lon_s">2_2</str>
+      <str name="cgi_s">cell_22</str>
+      <str name="id">cell_22_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3601</str>
+      <str name="roi3_id_s">3603031</str>
+      <str name="roi4_id_s">3603030011</str>
+    </doc>
+    <doc>
+      <double name="rev_td">3083319.54701</double>
+      <str name="networks_s">4G</str>
+      <double name="vol_3g_td">164398.812652</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_3</str>
+      <double name="vol_2g_td">89319.54701</double>
+      <str name="site_id_s">site_3</str>
+      <str name="lat_lon_s">3_3</str>
+      <str name="cgi_s">cell_31</str>
+      <str name="id">cell_31_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">164398.812652</double>
+      <str name="networks_s">4G</str>
+      <double name="vol_3g_td">43723</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_3</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_3</str>
+      <str name="lat_lon_s">3_3</str>
+      <str name="cgi_s">cell_32</str>
+      <str name="id">cell_32_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">6178002.1354</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_4</str>
+      <double name="vol_2g_td">31285.1394548</double>
+      <str name="site_id_s">site_4</str>
+      <str name="lat_lon_s">4_4</str>
+      <str name="cgi_s">cell_41</str>
+      <str name="id">cell_41_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">9612945.53614</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">485322.965351</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_4</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_4</str>
+      <str name="lat_lon_s">4_4</str>
+      <str name="cgi_s">cell_42</str>
+      <str name="id">cell_42_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">4884034.88567</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">240744.897022</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_5</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_5</str>
+      <str name="lat_lon_s">5_5</str>
+      <str name="cgi_s">cell_51</str>
+      <str name="id">cell_51_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">2203368.43723</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_5</str>
+      <double name="vol_2g_td">43723</double>
+      <str name="site_id_s">site_5</str>
+      <str name="lat_lon_s">5_5</str>
+      <str name="cgi_s">cell_52</str>
+      <str name="id">cell_52_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">3766974.76283</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_6</str>
+      <double name="vol_2g_td">66974.76283</double>
+      <str name="site_id_s">site_6</str>
+      <str name="lat_lon_s">6_6</str>
+      <str name="cgi_s">cell_61</str>
+      <str name="id">cell_61_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">2800152.8012</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">125881.093885</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_6</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_6</str>
+      <str name="lat_lon_s">6_6</str>
+      <str name="cgi_s">cell_62</str>
+      <str name="id">cell_62_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3602</str>
+      <str name="roi3_id_s">3603032</str>
+      <str name="roi4_id_s">3603030012</str>
+    </doc>
+    <doc>
+      <double name="rev_td">3088965.64309</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">155950.739567</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_7</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_7</str>
+      <str name="lat_lon_s">7_7</str>
+      <str name="cgi_s">cell_71</str>
+      <str name="id">cell_71_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3603</str>
+      <str name="roi3_id_s">3603033</str>
+      <str name="roi4_id_s">3603030013</str>
+    </doc>
+    <doc>
+      <double name="rev_td">1856114.737832</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">156114.737832</double>
+      <str name="site_name_s">site_7</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_7</str>
+      <str name="lat_lon_s">7_7</str>
+      <str name="cgi_s">cell_72</str>
+      <str name="id">cell_72_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3603</str>
+      <str name="roi3_id_s">3603033</str>
+      <str name="roi4_id_s">3603030013</str>
+    </doc>
+    <doc>
+      <double name="rev_td">9965184.67408</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">503106.2496</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_8</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_8</str>
+      <str name="lat_lon_s">8_8</str>
+      <str name="cgi_s">cell_81</str>
+      <str name="id">cell_81_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3603</str>
+      <str name="roi3_id_s">3603033</str>
+      <str name="roi4_id_s">3603030013</str>
+    </doc>
+    <doc>
+      <double name="rev_td">118495.82568</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">156114.737832</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_8</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_8</str>
+      <str name="lat_lon_s">8_8</str>
+      <str name="cgi_s">cell_82</str>
+      <str name="id">cell_82_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3603</str>
+      <str name="roi3_id_s">3603033</str>
+      <str name="roi4_id_s">3603030013</str>
+    </doc>
+    <doc>
+      <double name="rev_td">9662588.46408</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_9</str>
+      <double name="vol_2g_td">118495.82568</double>
+      <str name="site_id_s">site_9</str>
+      <str name="lat_lon_s">9_9</str>
+      <str name="cgi_s">cell_91</str>
+      <str name="id">cell_91_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3604</str>
+      <str name="roi3_id_s">3603034</str>
+      <str name="roi4_id_s">3603030014</str>
+    </doc>
+    <doc>
+      <double name="rev_td">1.07926901385E7</double>
+      <str name="networks_s">2G</str>
+      <double name="vol_3g_td">0.0</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_9</str>
+      <double name="vol_2g_td">38685.7424736</double>
+      <str name="site_id_s">site_9</str>
+      <str name="lat_lon_s">9_9</str>
+      <str name="cgi_s">cell_92</str>
+      <str name="id">cell_92_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3604</str>
+      <str name="roi3_id_s">3603034</str>
+      <str name="roi4_id_s">3603030014</str>
+    </doc>
+    <doc>
+      <double name="rev_td">4339275.8634</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">195072.494655</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_10</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_10</str>
+      <str name="lat_lon_s">10_10</str>
+      <str name="cgi_s">cell_101</str>
+      <str name="id">cell_101_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3604</str>
+      <str name="roi3_id_s">3603034</str>
+      <str name="roi4_id_s">3603030014</str>
+    </doc>
+    <doc>
+      <double name="rev_td">1148753.55952</double>
+      <str name="networks_s">3G</str>
+      <double name="vol_3g_td">49159.2062544</double>
+      <double name="vol_4g_td">0.0</double>
+      <str name="site_name_s">site_10</str>
+      <double name="vol_2g_td">0.0</double>
+      <str name="site_id_s">site_10</str>
+      <str name="lat_lon_s">10_10</str>
+      <str name="cgi_s">cell_102</str>
+      <str name="id">cell_102_JABODETABEK</str>
+      <str name="roi1_id_s">JABODETABEK</str>
+      <str name="roi2_id_s">3604</str>
+      <str name="roi3_id_s">3603034</str>
+      <str name="roi4_id_s">3603030014</str>
+    </doc>
+    
+    <doc>
+      <str name="networks_s">3G</str>
+      <str name="site_name_s">site_11</str>
+      <str name="site_id_s">site_11</str>
+      <str name="lat_lon_s">11_11</str>
+      <str name="cgi_s">cell_111</str>
+      <str name="id">cell_111_BANDUNG</str>
+      <str name="roi1_id_s">BANDUNG</str>
+      <str name="roi2_id_s">3604</str>
+      <str name="roi3_id_s">3603034</str>
+      <str name="roi4_id_s">3603030014</str>
+      <str name="vqi_ti">10</str>
+      <str name="congestion_ti">100</str>
+    </doc>
+    
+    <doc>
+      <str name="networks_s">3G</str>
+      <str name="site_name_s">site_11</str>
+      <str name="site_id_s">site_11</str>
+      <str name="lat_lon_s">11_11</str>
+      <str name="cgi_s">cell_112</str>
+      <str name="id">cell_112_BANDUNG</str>
+      <str name="roi1_id_s">BANDUNG</str>
+      <str name="roi2_id_s">1604</str>
+      <str name="roi3_id_s">1603034</str>
+      <str name="roi4_id_s">1603030014</str>
+      <str name="vqi_ti">20</str>
+      <str name="congestion_ti">200</str>
+    </doc>
+    
+    <doc>
+      <str name="networks_s">3G</str>
+      <str name="site_name_s">site_11</str>
+      <str name="site_id_s">site_11</str>
+      <str name="lat_lon_s">11_11</str>
+      <str name="cgi_s">cell_113</str>
+      <str name="id">cell_113_BANDUNG</str>
+      <str name="roi1_id_s">BANDUNG</str>
+      <str name="roi2_id_s">1604</str>
+      <str name="roi3_id_s">1603034</str>
+      <str name="roi4_id_s">1603030014</str>
+      <str name="vqi_ti">30</str>
+      <str name="congestion_ti">300</str>
+    </doc>
+    
+  </result>
+</response>

@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL4": [
+        "3603030014"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "calls",
+      "home",
+      "total_stay_duration",
+      "avg_stay_duration"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "9_9",
+      "10_10"
+    ]
+  },
+  "results": [
+    {
+      "roiL2": "3604",
+      "siteId": "site_10",
+      "siteName": "site_10",
+      "roiL3": "3603034",
+      "lon": 10.0,
+      "id": "10_10",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "calls": 62.0,
+          "total_stay_duration": 2.0,
+          "cellId": "cell_101",
+          "avg_stay_duration": 2.0,
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 10.0,
+      "home": 1
+    },
+    {
+      "roiL2": "3604",
+      "siteId": "site_9",
+      "siteName": "site_9",
+      "roiL3": "3603034",
+      "lon": 9.0,
+      "id": "9_9",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "calls": 60.0,
+          "total_stay_duration": 4.2,
+          "cellId": "cell_91",
+          "avg_stay_duration": 4.2,
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030014",
+      "lat": 9.0,
+      "home": 1
+    }
+  ]
+}

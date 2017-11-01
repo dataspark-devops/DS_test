@@ -1,0 +1,28 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL2": [
+        "3600"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "home"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "1_1",
+      "2_2"
+    ]
+  },
+  "results": []
+}

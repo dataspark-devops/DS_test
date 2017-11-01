@@ -1,0 +1,490 @@
+{
+  "Filters": [
+    {
+      "name": "threshold_data_usage",
+      "solrField": "volume_data_td",
+      "type": "range",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "threshold_data_arpu",
+      "solrField": "revenue_data_td",
+      "type": "range",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "segment_vvip",
+      "solrField": "segment_vvip_s",
+      "mapping": [
+        {
+          "from": "filter.segment.vvip.other",
+          "to": "other"
+        },
+        {
+          "from": "filter.segment.vvip.vvip",
+          "to": "vvip"
+        }
+      ]
+    },
+    {
+      "name": "segment_arpu",
+      "solrField": "segment_arpu_ti",
+      "mapping": [
+        {
+          "from": "filter.segment.arpu.veryLow",
+          "to": "1"
+        },
+        {
+          "from": "filter.segment.arpu.low",
+          "to": "2"
+        },
+        {
+          "from": "filter.segment.arpu.medium",
+          "to": "3"
+        },
+        {
+          "from": "filter.segment.arpu.high",
+          "to": "4"
+        },
+        {
+          "from": "filter.segment.arpu.veryHigh",
+          "to": "5"
+        },
+        {
+          "from": "filter.segment.arpu.topUsage",
+          "to": "6"
+        }
+      ]
+    },
+    {
+      "name": "segment_los",
+      "solrField": "segment_los_ti",
+      "mapping": [
+        {
+          "from": "filter.segment.los.new",
+          "to": "1"
+        },
+        {
+          "from": "filter.segment.los.short",
+          "to": "2"
+        },
+        {
+          "from": "filter.segment.los.medium",
+          "to": "3"
+        },
+        {
+          "from": "filter.segment.los.long",
+          "to": "4"
+        },
+        {
+          "from": "filter.segment.los.veryLong",
+          "to": "5"
+        },
+        {
+          "from": "filter.segment.los.loyal",
+          "to": "6"
+        },
+        {
+          "from": "filter.segment.los.unknown",
+          "to": "0"
+        }
+      ]
+    },
+    {
+      "name": "segment_unsupervised",
+      "solrField": "segment_unsupervised_ti",
+      "mapping": [
+        {
+          "from": "filter.segment.unsupervised.economic",
+          "to": "1"
+        },
+        {
+          "from": "filter.segment.unsupervised.massMarket",
+          "to": "2"
+        },
+        {
+          "from": "filter.segment.unsupervised.dormant",
+          "to": "3"
+        },
+        {
+          "from": "filter.segment.unsupervised.priority",
+          "to": "4"
+        },
+        {
+          "from": "filter.segment.unsupervised.earlyAdopter",
+          "to": "5"
+        },
+        {
+          "from": "filter.segment.unsupervised.promoSeeker",
+          "to": "6"
+        },
+        {
+          "from": "filter.segment.unsupervised.professional",
+          "to": "7"
+        },
+        {
+          "from": "filter.segment.unsupervised.smsLover",
+          "to": "8"
+        },
+        {
+          "from": "filter.segment.unsupervised.new",
+          "to": "9"
+        },
+        {
+          "from": "filter.segment.unsupervised.returning",
+          "to": "10"
+        },
+        {
+          "from": "filter.segment.unsupervised.existing",
+          "to": "11"
+        }
+      ]
+    },
+    {
+      "name": "segment_loyalti",
+      "solrField": "segment_loyalty_ti",
+      "mapping": [
+        {
+          "from": "filter.segment.loyalti.mass",
+          "to": "1"
+        },
+        {
+          "from": "filter.segment.loyalti.red",
+          "to": "2"
+        },
+        {
+          "from": "filter.segment.loyalti.gold",
+          "to": "3"
+        },
+        {
+          "from": "filter.segment.loyalti.platinum",
+          "to": "4"
+        }
+      ]
+    },
+    {
+      "name": "segment_broadband",
+      "solrField": "segment_broadband_ti",
+      "mapping": [
+        {
+          "from": "filter.segment.broadband.accidentalUser",
+          "to": "1"
+        },
+        {
+          "from": "filter.segment.broadband.promisingAccidentalUser",
+          "to": "2"
+        },
+        {
+          "from": "filter.segment.broadband.freeRiders",
+          "to": "3"
+        },
+        {
+          "from": "filter.segment.broadband.deviceChanger",
+          "to": "4"
+        },
+        {
+          "from": "filter.segment.broadband.weekendTroopers",
+          "to": "5"
+        },
+        {
+          "from": "filter.segment.broadband.nightOwl",
+          "to": "6"
+        },
+        {
+          "from": "filter.segment.broadband.comeAndGo",
+          "to": "7"
+        },
+        {
+          "from": "filter.segment.broadband.sleepingBeauty",
+          "to": "8"
+        },
+        {
+          "from": "filter.segment.broadband.highFlayer",
+          "to": "9"
+        },
+        {
+          "from": "filter.segment.broadband.lowValueUser",
+          "to": "10"
+        },
+        {
+          "from": "filter.segment.broadband.theBlackberries",
+          "to": "11"
+        },
+        {
+          "from": "filter.segment.broadband.xFiles",
+          "to": "12"
+        },
+        {
+          "from": "filter.segment.broadband.undefined",
+          "to": "0"
+        }
+      ]
+    },
+    {
+      "name": "device_type",
+      "solrField": "device_type_ti",
+      "mapping": [
+        {
+          "from": "filter.deviceType.smartphone",
+          "to": "1"
+        },
+        {
+          "from": "filter.deviceType.featurephone",
+          "to": "2"
+        },
+        {
+          "from": "filter.deviceType.basicphone",
+          "to": "3"
+        },
+        {
+          "from": "filter.deviceType.tablet",
+          "to": "4"
+        },
+        {
+          "from": "filter.deviceType.modem",
+          "to": "5"
+        },
+        {
+          "from": "filter.deviceType.otherDevice",
+          "to": "6"
+        },
+        {
+          "from": "filter.deviceType.unknown",
+          "to": "0"
+        }
+      ]
+    },
+    {
+      "name": "device_frequency_2g",
+      "solrField": "freq_bands_ss",
+      "mapping": [
+        {
+          "from": "filter.deviceFrequency.2g.850",
+          "to": "2g.850"
+        },
+        {
+          "from": "filter.deviceFrequency.2g.900",
+          "to": "2g.900"
+        },
+        {
+          "from": "filter.deviceFrequency.2g.1800",
+          "to": "2g.1800"
+        }
+      ]
+    },
+    {
+      "name": "device_frequency_3g",
+      "solrField": "freq_bands_ss",
+      "mapping": [
+        {
+          "from": "filter.deviceFrequency.3g.850",
+          "to": "3g.850"
+        },
+        {
+          "from": "filter.deviceFrequency.3g.900",
+          "to": "3g.900"
+        },
+        {
+          "from": "filter.deviceFrequency.3g.2100",
+          "to": "3g.2100"
+        }
+      ]
+    },
+    {
+      "name": "device_frequency_4g",
+      "solrField": "freq_bands_ss",
+      "mapping": [
+        {
+          "from": "filter.deviceFrequency.4g.700",
+          "to": "4g.700"
+        },
+        {
+          "from": "filter.deviceFrequency.4g.850",
+          "to": "4g.850"
+        },
+        {
+          "from": "filter.deviceFrequency.4g.900",
+          "to": "4g.900"
+        },
+        {
+          "from": "filter.deviceFrequency.4g.1800",
+          "to": "4g.1800"
+        },
+        {
+          "from": "filter.deviceFrequency.4g.2100",
+          "to": "4g.2100"
+        },
+        {
+          "from": "filter.deviceFrequency.4g.2300",
+          "to": "4g.2300"
+        }
+      ]
+    },
+    {
+      "name": "cell_network",
+      "solrField": "networks_s",
+      "mapping": [
+        {
+          "from": "filter.cellNetwork.2g",
+          "to": "2G"
+        },
+        {
+          "from": "filter.cellNetwork.3g",
+          "to": "3G"
+        },
+        {
+          "from": "filter.cellNetwork.4g",
+          "to": "4G"
+        }
+      ]
+    },
+    {
+      "name": "cell_vendor",
+      "solrField": "vendor_s",
+      "mapping": [
+        {
+          "from": "filter.cellVendor.nokia",
+          "to": "1"
+        },
+        {
+          "from": "filter.cellVendor.huawei",
+          "to": "2"
+        },
+        {
+          "from": "filter.cellVendor.lg",
+          "to": "3"
+        }
+      ]
+    },
+    {
+      "name": "roiL1",
+      "solrField": "roi1_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "roiL2",
+      "solrField": "roi2_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "roiL3",
+      "solrField": "roi3_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "roiL4",
+      "solrField": "roi4_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "home_roiL1",
+      "solrField": "home_roi1_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "home_roiL2",
+      "solrField": "home_roi2_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "home_roiL3",
+      "solrField": "home_roi3_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "home_roiL4",
+      "solrField": "home_roi4_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "work_roiL1",
+      "solrField": "work_roi1_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "work_roiL2",
+      "solrField": "work_roi2_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "work_roiL3",
+      "solrField": "work_roi3_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    },
+    {
+      "name": "work_roiL4",
+      "solrField": "work_roi4_id_s",
+      "mapping": [
+        {
+          "from": "*",
+          "to": "*"
+        }
+      ]
+    }
+  ]
+}

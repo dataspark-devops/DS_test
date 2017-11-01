@@ -1,0 +1,97 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL4": [
+        "3603030014"
+      ]
+    },
+    "periodType": "month",
+    "periodRange": [
+      {
+        "startDate": "2017-01-01T00:00:00+07:00",
+        "endDate": "2017-02-01T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "calls",
+      "home",
+      "payload",
+      "revenue",
+      "total_stay_duration",
+      "avg_stay_duration"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": null,
+    "order": [
+      "id",
+      "siteId",
+      "siteName",
+      "lat",
+      "lon",
+      "roiL1",
+      "roiL2",
+      "roiL3",
+      "roiL4",
+      "home",
+      "work",
+      "revenue",
+      "payload",
+      "sms",
+      "calls",
+      "unique_people",
+      "total_stay_duration",
+      "avg_stay_duration",
+      "vqi",
+      "congestion"
+    ]
+  },
+  "results": [
+    [
+      "10_10",
+      "site_10",
+      "site_10",
+      10.0,
+      10.0,
+      "JABODETABEK",
+      "3604",
+      "3603034",
+      "3603030014",
+      1,
+      null,
+      5488029.42292,
+      244231.707,
+      218.0,
+      71.0,
+      null,
+      8.7,
+      8.7,
+      null,
+      null
+    ],
+    [
+      "9_9",
+      "site_9",
+      "site_9",
+      9.0,
+      9.0,
+      "JABODETABEK",
+      "3604",
+      "3603034",
+      "3603030014",
+      1,
+      null,
+      20455278.60258,
+      157181.572,
+      968.0,
+      89.0,
+      null,
+      7.5,
+      7.5,
+      null,
+      null
+    ]
+  ]
+}

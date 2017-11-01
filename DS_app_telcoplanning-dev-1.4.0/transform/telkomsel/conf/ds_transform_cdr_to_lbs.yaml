@@ -1,0 +1,247 @@
+# Ingestion of Telkomsel CDR input to LBS+ format 
+# Join approach: Use Spark join to match customer profile with cdr msisdn
+name: cdr_ingestion
+arguments:
+    - !argument
+        name: input
+        description: CDR input path
+        required: true
+
+    - !argument
+        name: cell_master
+        description: Cell master file
+        required: true
+
+    - !argument
+        name: customer_profile
+        description: Customer profile file
+        required: true
+ 
+    - !argument
+        name: output
+        description: LBS+ output path
+        required: true
+        
+source:
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg input
+pre:
+    !!com.dataspark.jobs.composite.RDDParallelJob
+        jobs:
+            - !!com.dataspark.jobs.inputs.FileCacheJob
+                name: cell_towers
+                uri: !arg cell_master
+                multiLined: true
+                keyField: cgi
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: cgi
+                                index: 0
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: lat
+                                index: 1
+                                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: lon
+                                index: 2
+                                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: city
+                                index: 9
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+            
+            - !!com.dataspark.jobs.transformations.SideLoadJob
+                source: !!com.dataspark.sources.TextFileSource
+                    uri: !arg customer_profile
+                name: customer_profile
+                job: !!com.dataspark.jobs.composite.RDDPipelineJob
+                    pipeline: 
+                        - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                            decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                                delimiter: ','
+                                inner: !!com.dataspark.codecs.MapDecoder
+                                    fields:
+                                        - !!com.dataspark.codecs.Field
+                                            name: msisdn
+                                            index: 0
+                                            decoder: !!com.dataspark.codecs.StringDecoder {}
+                                        - !!com.dataspark.codecs.Field
+                                            name: imsi
+                                            index: 1
+                                            decoder: !!com.dataspark.codecs.StringDecoder {}
+                                        - !!com.dataspark.codecs.Field
+                                            name: tac
+                                            index: 2
+                                            decoder: !!com.dataspark.codecs.StringDecoder {}
+                        
+                        - !!com.dataspark.jobs.transformations.FilterJob
+                            inputFields: [imsi, msisdn]
+                            exp: 'msisdn != null && imsi != null'            
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: ts
+                                index: 0
+                                decoder: !!com.dataspark.codecs.DateDecoder
+                                    format: yyyyMMddHHmmss
+                            - !!com.dataspark.codecs.Field
+                                name: cell
+                                index: 16
+                                decoder: !!com.dataspark.codecs.FixedLengthRecordStringDecoder
+                                    flexible: true
+                                    sizes: [3,2,5,5]
+                                    inner: !!com.dataspark.codecs.MapDecoder
+                                        fields:
+                                            - !!com.dataspark.codecs.Field
+                                                name: mcc
+                                                index: 0
+                                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                                            - !!com.dataspark.codecs.Field
+                                                name: mnc
+                                                index: 1
+                                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                                            - !!com.dataspark.codecs.Field
+                                                name: lac
+                                                index: 2
+                                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                                            - !!com.dataspark.codecs.Field
+                                                name: ci
+                                                index: 3
+                                                decoder: !!com.dataspark.codecs.IntDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: event_type
+                                index: 21
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+                            - !!com.dataspark.codecs.Field
+                                name: msisdn
+                                index: 33
+                                decoder: !!com.dataspark.codecs.StringDecoder {}
+            
+            - !!com.dataspark.jobs.transformations.FilterJob
+                inputFields: [event_type]
+                exp: '"Voice MO".equals(event_type) || "SMS".equals(event_type)'
+                                    
+            - !!com.dataspark.jobs.validation.ValidationJob
+                validator: !!com.dataspark.jobs.validation.MapValidator
+                    requiredFields: [msisdn, cell.mcc, cell.mnc, cell.lac, cell.ci]
+                    fieldValidators:
+                        msisdn: !!com.dataspark.jobs.validation.RegexpValidator
+                            regexp: !regexp ^\d{6,}$
+                        cell.mcc: !!com.dataspark.jobs.validation.RegexpValidator
+                            regexp: !regexp ^\d+$
+                        cell.mnc: !!com.dataspark.jobs.validation.RegexpValidator
+                            regexp: !regexp ^\d+$
+
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                    # Padding left zeros for CI (NOTE: cell.ci will be converted into String)
+                    - !!com.dataspark.jobs.transformations.FormattedStringEnricher
+                        inputFields: [cell.ci]
+                        outputField: cell.ci
+                        targetFormat: '%05d'
+                    
+                    # Rebuild CGI from cell values
+                    - !!com.dataspark.jobs.transformations.FormattedStringEnricher
+                        inputFields: [cell.mcc, cell.mnc, cell.lac, cell.ci]
+                        outputField: cgi
+                        targetFormat: '%s%s%s%s'
+                    
+                    - !!com.dataspark.jobs.transformations.SimpleMapLookup
+                        outputField: cell_tower
+                        source: cell_towers
+                        inputField: cgi
+                        
+                    # Replace all spaces to _ for city        
+                    - !!com.dataspark.jobs.transformations.SimpleStringReplace 
+                        inputField: cell_tower.city
+                        outputField: cell_tower.city
+                        regex: ' '
+                        replacement: '-'
+                        
+            - !!com.dataspark.jobs.transformations.FilterJob
+                inputFields: [cell_tower]
+                exp: 'cell_tower != null && ((Map)cell_tower).get("lat") != null && ((Map)cell_tower).get("lon") != null'
+           
+            - !!com.dataspark.jobs.transformations.JoinJob
+                numPartitions: 400
+                sideSource: customer_profile
+                mainKeyField: msisdn
+                sideKeyField: msisdn
+                outputField: customer_profile
+                                
+            - !!com.dataspark.jobs.transformations.PairFromMapJob
+                encoder: !!com.dataspark.codecs.MapEncoder
+                    fields:
+                        - !!com.dataspark.codecs.Field
+                            name: cell_tower.city
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                            
+                        - !!com.dataspark.codecs.Field
+                            name: ts
+                            encoder: !!com.dataspark.codecs.DateEncoder
+                                format: "yyyy-MM-dd"
+                    
+                    inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                        delimiter: '/'
+
+            - !!com.dataspark.jobs.transformations.ValueEncodingJob
+                encoder: !!com.dataspark.codecs.MapEncoder
+                    fields:
+                        - !!com.dataspark.codecs.Field
+                            name: ts
+                            encoder: !!com.dataspark.codecs.DateEncoder
+                                format: yyyy-MM-dd HH:mm:ss
+                        - !!com.dataspark.codecs.Field
+                            name: customer_profile.imsi
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: msisdn
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: cell
+                            encoder: !!com.dataspark.codecs.MapEncoder
+                                fields:
+                                    - !!com.dataspark.codecs.Field
+                                        name: mcc
+                                        encoder: !!com.dataspark.codecs.StringEncoder {}
+                                    - !!com.dataspark.codecs.Field
+                                        name: mnc
+                                        encoder: !!com.dataspark.codecs.StringEncoder {}
+                                    - !!com.dataspark.codecs.Field
+                                        name: lac
+                                        encoder: !!com.dataspark.codecs.StringEncoder {}
+                                    - !!com.dataspark.codecs.Field
+                                        name: ci
+                                        encoder: !!com.dataspark.codecs.StringEncoder {}
+                                inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                                    delimiter: '-'
+                        - !!com.dataspark.codecs.Field
+                            name: event_type
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: cell_tower.lat
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: cell_tower.lon
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: customer_profile.tac
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                    inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                        delimiter: '|'
+
+            - !!com.dataspark.jobs.outputs.MultipleTextFileOutputJob
+                uri: !arg output
+                executionId: !epoch
+

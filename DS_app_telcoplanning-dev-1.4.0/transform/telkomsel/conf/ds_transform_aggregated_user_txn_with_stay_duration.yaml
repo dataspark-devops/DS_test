@@ -1,0 +1,278 @@
+# transform user profile and transactions into user_transaction collection
+
+name: ds_transform_aggregated_user_txn
+
+# input arguments
+arguments:
+  - !argument
+    name: lbs_plus
+    description: 
+    required: true
+    
+  - !argument
+    name: stay_duration_data
+    description: 
+    required: true
+
+  - !argument
+    name: fixed_cell_master
+    description: 
+    required: true
+    
+# output arguments
+  - !argument
+    name: aggregated_user_txn
+    description:
+    required: true
+    
+# main data source
+source:
+  !!com.dataspark.sources.TextFileSource
+    uri: !arg lbs_plus
+    
+# pre-load some data sources
+pre:
+  !!com.dataspark.jobs.composite.RDDParallelJob
+    jobs:
+      - !!com.dataspark.jobs.inputs.FileCacheJob
+        uri: !arg fixed_cell_master
+        name: cell_info
+        multiLined: true
+        keyField: cell_id
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: cell_id
+                index: 0
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+        
+              - !!com.dataspark.codecs.Field
+                name: site_id_s
+                index: 15
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: networks_s
+                index: 3
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+ 
+              - !!com.dataspark.codecs.Field
+                name: roi1_name_s
+                index: 9
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+
+              - !!com.dataspark.codecs.Field
+                name: roi2_id_s
+                index: 8
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+
+              - !!com.dataspark.codecs.Field
+                name: roi3_id_s
+                index: 7
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+
+              - !!com.dataspark.codecs.Field
+                name: roi4_id_s
+                index: 6
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+      - !!com.dataspark.jobs.transformations.SideLoadJob
+          source: !!com.dataspark.sources.TextFileSource
+              uri: !arg stay_duration_data
+          name: stay_duration_data
+          job: !!com.dataspark.jobs.composite.RDDPipelineJob
+              pipeline: 
+                  - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                      decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                          delimiter: '\|'
+                          inner: !!com.dataspark.codecs.MapDecoder
+                              fields:
+                                  - !!com.dataspark.codecs.Field
+                                      name: msisdn
+                                      index: 0
+                                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                                  - !!com.dataspark.codecs.Field
+                                      name: cgi
+                                      index: 1
+                                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                                  - !!com.dataspark.codecs.Field
+                                      name: week
+                                      index: 2
+                                      decoder: !!com.dataspark.codecs.IntDecoder {}
+                                  - !!com.dataspark.codecs.Field
+                                      name: stay_duration
+                                      index: 3
+                                      decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                                      
+                  - !!com.dataspark.jobs.transformations.ProcessingJob
+                    enrichers:
+                      - !!com.dataspark.jobs.transformations.JavaExpression
+                        outputField: cgi
+                        inputFields: [cgi]
+                        exp: '"NA".equals((String)cgi) ? "" : ((String)cgi).replace("-", "")'
+                        
+                      - !!com.dataspark.jobs.transformations.JavaExpression
+                        outputField: stay_duration_uid
+                        inputFields: [msisdn,cgi,week]
+                        exp: '(String)msisdn+":"+(String)cgi+":"+String.valueOf(week)'
+                                                      
+job:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline:
+      - !!com.dataspark.jobs.transformations.ValueDecodingJob
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: timestamp
+                index: 0
+                decoder: !!com.dataspark.codecs.DateDecoder
+                  format: yyyy-MM-dd HH:mm:ss
+                
+              - !!com.dataspark.codecs.Field
+                name: imsi_s
+                index: 1
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: mobile_number_s
+                index: 2
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: cell_id_s
+                index: 3
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              
+              - !!com.dataspark.codecs.Field
+                name: event_type_s
+                index: 4
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.GetWeekNumber
+            outputField: week_num_s
+            inputField: timestamp
+            
+          - !!com.dataspark.jobs.transformations.Lookup
+            outputField: sms_count_ti
+            inputField: event_type_s
+            defaultValue: 0
+            values:
+              "SMS": 1
+                
+          - !!com.dataspark.jobs.transformations.Lookup
+            outputField: voice_mo_count_ti
+            inputField: event_type_s
+            defaultValue: 0
+            values:
+              "Voice MO": 1
+
+          - !!com.dataspark.jobs.transformations.JavaExpression
+            outputField: cell_id_s
+            inputFields: [cell_id_s]
+            exp: '"NA".equals((String)cell_id_s) ? "" : ((String)cell_id_s).replace("-", "")'
+              
+      - !!com.dataspark.jobs.transformations.MapReduceJob
+        keyFields: [mobile_number_s,cell_id_s,week_num_s]
+        valueFieldReduceExp:
+          "sms_count_ti" : ' (Integer)(v1.get("sms_count_ti")) + (Integer)(v2.get("sms_count_ti")) '
+          "voice_mo_count_ti" : ' (Integer)(v1.get("voice_mo_count_ti")) + (Integer)(v2.get("voice_mo_count_ti")) '
+
+
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.JavaExpression
+            outputField: user_tx_id
+            inputFields: [mobile_number_s,cell_id_s,week_num_s]
+            exp: '(String)mobile_number_s+":"+(String)cell_id_s+":"+String.valueOf(week_num_s)'
+          
+      - !!com.dataspark.jobs.transformations.JoinJob
+          sideSource: stay_duration_data
+          mainKeyField: user_tx_id
+          sideKeyField: stay_duration_uid
+          outputField: user_tx_sd
+          leftJoin: true                    
+
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.SimpleMapLookup
+            outputField: cell_details
+            source: cell_info
+            inputField: cell_id_s
+            
+          - !!com.dataspark.jobs.transformations.FieldCopy
+            fields: 
+            - [cell_details.networks_s, networks_s]
+            - [cell_details.site_id_s, site_id_s]
+            - [cell_details.roi1_name_s, roi1_name_s]
+            - [cell_details.roi2_id_s, roi2_id_s]
+            - [cell_details.roi3_id_s, roi3_id_s]
+            - [cell_details.roi4_id_s, roi4_id_s]
+            - [user_tx_sd.stay_duration, stay_duration]
+            
+
+      - !!com.dataspark.jobs.transformations.ValueEncodingJob
+        stopOnError: false
+        reportErrors: true
+        name: 
+        encoder: !!com.dataspark.codecs.MapEncoder
+          fields:           
+            - !!com.dataspark.codecs.Field
+              name: mobile_number_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+                        
+            - !!com.dataspark.codecs.Field
+              name: cell_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+
+            - !!com.dataspark.codecs.Field
+              name: week_num_s
+              encoder: !!com.dataspark.codecs.IntEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: sms_count_ti
+              encoder: !!com.dataspark.codecs.IntEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: voice_mo_count_ti
+              encoder: !!com.dataspark.codecs.IntEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: site_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: networks_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: stay_duration
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}              
+
+            - !!com.dataspark.codecs.Field
+              name: roi1_name_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+
+            - !!com.dataspark.codecs.Field
+              name: roi2_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+
+            - !!com.dataspark.codecs.Field
+              name: roi3_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+
+            - !!com.dataspark.codecs.Field
+              name: roi4_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+          inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+            delimiter: '|'
+        
+      - !!com.dataspark.jobs.outputs.TextFileOutputJob
+        uri: !arg aggregated_user_txn
+        consoleOutput: false

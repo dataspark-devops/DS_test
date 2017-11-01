@@ -1,0 +1,3 @@
+msisdn_1|cell_1|w_26|2|0|site_id_1,site_id_2|2G, 3G|Vendor_1
+msisdn_1|cell_2|w_22|2|4|site_id_1|2G|Vendor_12
+msisdn_1|cell_1|w_22|3|3|site_id_1,site_id_2|2G, 3G|Vendor_1

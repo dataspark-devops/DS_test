@@ -1,0 +1,198 @@
+# ds_transform_cell_master using cells and cell mapping
+# author: ragarwal
+
+# application name
+name: ds_transform_cell_master
+
+# input arguments
+arguments:
+    - !argument
+        name: cells
+        description:
+        required: true
+        
+    - !argument
+        name: cell_mapping
+        description:
+        required: true
+
+    - !argument
+        name: fixed_cell_master
+        description:
+        required: true
+        
+# data source
+source:
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg cell_mapping
+        
+# pre-load some data sources
+pre:
+  !!com.dataspark.jobs.composite.RDDParallelJob
+    jobs:        
+      - !!com.dataspark.jobs.transformations.SideLoadJob
+        source: !!com.dataspark.sources.TextFileSource
+          uri: !arg cells
+        name: all_cells
+        job: !!com.dataspark.jobs.composite.RDDPipelineJob
+          pipeline: 
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+              decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                delimiter: '\t'
+                inner: !!com.dataspark.codecs.MapDecoder
+                  fields:
+                    - !!com.dataspark.codecs.Field
+                      name: cell_id
+                      index: 1
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                            
+                    - !!com.dataspark.codecs.Field
+                      name: site_name
+                      index: 2
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: lac
+                      index: 9
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+              enrichers:
+                - !!com.dataspark.jobs.transformations.JavaExpression
+                  outputField: cell_id
+                  inputFields: [cell_id]
+                  exp: '((String)cell_id).replaceFirst ("^0*", "")' 
+                  
+                - !!com.dataspark.jobs.transformations.JavaExpression
+                  outputField: cell_id
+                  inputFields: [cell_id, lac]
+                  exp: ' "525-1-".concat((String)lac).concat("-").concat((String)cell_id) ' 
+                  
+            - !!com.dataspark.jobs.transformations.MapReduceJob
+              keyFields: [cell_id,site_name]
+                  
+# main processing jobs
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            # decode source data line by line
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                      decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                        delimiter: '\|'
+                        inner: !!com.dataspark.codecs.MapDecoder
+                          fields:
+                            - !!com.dataspark.codecs.Field
+                              name: lbs_cell_id
+                              index: 0
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                              
+                            - !!com.dataspark.codecs.Field
+                              name: network
+                              index: 1
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                              
+                            - !!com.dataspark.codecs.Field
+                              name: lat
+                              index: 3
+                              decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                                  
+                            - !!com.dataspark.codecs.Field
+                              name: lon
+                              index: 4
+                              decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                                    
+                            - !!com.dataspark.codecs.Field
+                              name: submtz_id
+                              index: 5
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                           
+                            - !!com.dataspark.codecs.Field
+                              name: subzone_id
+                              index: 6
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                           
+                            - !!com.dataspark.codecs.Field
+                              name: planning_area_id
+                              index: 7
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+                           
+                            - !!com.dataspark.codecs.Field
+                              name: planning_region_id
+                              index: 8
+                              decoder: !!com.dataspark.codecs.StringDecoder {}
+            
+            - !!com.dataspark.jobs.transformations.MapReduceJob
+              keyFields: [lbs_cell_id,network,lat,lon,submtz_id,subzone_id,planning_area_id,planning_region_id]
+            
+            # enrich/transform data
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                  - !!com.dataspark.jobs.transformations.FormattedStringEnricher
+                    inputFields: [lat, lon]
+                    outputField: lat_lon_s
+                    targetFormat: '%.5f_%.5f' 
+                    
+            - !!com.dataspark.jobs.transformations.JoinJob
+              sideSource: all_cells
+              mainKeyField: lbs_cell_id
+              sideKeyField: cell_id
+              outputField: all_cell_info
+              leftJoin: true
+                    
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                  - !!com.dataspark.jobs.transformations.FieldCopy
+                    fields: 
+                    - [all_cell_info.cell_id, cell_id]
+                    - [all_cell_info.lat, lat]
+                    - [all_cell_info.lon, lon]
+                    - [all_cell_info.network, network]
+                    - [all_cell_info.site_name, site_name]
+                    - [all_cell_info.submtz_id, submtz_id]
+                    - [all_cell_info.subzone_id, subzone_id]
+                    - [all_cell_info.planning_area_id, planning_area_id]
+                    - [all_cell_info.planning_region_id, planning_region_id]
+                    - [all_cell_info.lat_lon_s, lat_lon_s]
+                    
+            - !!com.dataspark.jobs.transformations.ValueEncodingJob
+                encoder: !!com.dataspark.codecs.MapEncoder
+                    fields:
+                        - !!com.dataspark.codecs.Field
+                            name: cell_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lat
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lon
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}                            
+                        - !!com.dataspark.codecs.Field
+                            name: network
+                            encoder: !!com.dataspark.codecs.StringEncoder {}                            
+                        - !!com.dataspark.codecs.Field
+                            name: site_name
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: submtz_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: subzone_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: planning_area_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: planning_region_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lat_lon_s
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                    inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                        delimiter: '|'
+                    
+            # write out to output path
+            - !!com.dataspark.jobs.outputs.TextFileOutputJob
+                uri: !arg fixed_cell_master
+                consoleOutput: false
+            

@@ -1,0 +1,223 @@
+# generate enriched user profile using multiple sources.
+
+name: ds_transform_enrich_postpaid_user_profile
+
+# input arguments
+arguments:
+- !argument
+  name: fixed_cell_master
+  description:
+  required: true
+  
+- !argument
+  name: home_work_info
+  description:
+  required: true
+  
+- !argument
+  name: edw_postpaid
+  description:
+  required: true
+
+# output parameters
+- !argument
+  name: enriched_customer_profile
+  description:
+  required: true
+  
+# main data source
+source:
+  !!com.dataspark.sources.TextFileSource
+    uri: !arg edw_postpaid
+    
+# pre-load some data sources
+pre:
+  !!com.dataspark.jobs.composite.RDDParallelJob
+    jobs:
+      - !!com.dataspark.jobs.inputs.FileCacheJob
+        uri: !arg fixed_cell_master
+        name: cell_roi_layers
+        multiLined: true
+        keyField: cell_s
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\|'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: cell_s
+                index: 0
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: submtz_id
+                index: 5
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              
+              - !!com.dataspark.codecs.Field
+                name: subzone_id
+                index: 6
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: planning_area_id
+                index: 7
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+              
+              - !!com.dataspark.codecs.Field
+                name: planning_region_id
+                index: 8
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: site_id_s
+                index: 9
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+      - !!com.dataspark.jobs.transformations.SideLoadJob
+        source: !!com.dataspark.sources.TextFileSource
+          uri: !arg home_work_info
+        name: home_work_info
+        job: !!com.dataspark.jobs.composite.RDDPipelineJob
+          pipeline:
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+              decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                delimiter: '\t'
+                inner: !!com.dataspark.codecs.MapDecoder
+                  fields:
+                    - !!com.dataspark.codecs.Field
+                      name: imsi_s
+                      index: 0
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+                    - !!com.dataspark.codecs.Field
+                      name: home_cell_ss
+                      index: 12
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                    
+                    - !!com.dataspark.codecs.Field
+                      name: work_cell_ss
+                      index: 13
+                      decoder: !!com.dataspark.codecs.StringDecoder {}
+                      
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+              enrichers:
+                - !!com.dataspark.jobs.transformations.JavaExpression
+                  outputField: home_cell_s
+                  inputFields: [home_cell_ss]
+                  exp: '"NA".equals((String)home_cell_ss) ? "" : "525-1-".concat(((String)home_cell_ss).split(",")[0])'
+                  
+                - !!com.dataspark.jobs.transformations.JavaExpression
+                  outputField: work_cell_s
+                  inputFields: [work_cell_ss]
+                  exp: '"NA".equals((String)work_cell_ss) ? "" : "525-1-".concat(((String)work_cell_ss).split(",")[0])'
+                  
+job:
+  !!com.dataspark.jobs.composite.RDDPipelineJob
+    pipeline:
+      - !!com.dataspark.jobs.transformations.ValueDecodingJob
+        decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+          delimiter: '\;'
+          inner: !!com.dataspark.codecs.MapDecoder
+            fields:
+              - !!com.dataspark.codecs.Field
+                name: imsi_s
+                index: 251
+                decoder: !!com.dataspark.codecs.StringDecoder {}
+                
+              - !!com.dataspark.codecs.Field
+                name: tot_amt_d
+                index: 524
+                decoder: !!com.dataspark.codecs.DoubleDecoder {}
+                
+      - !!com.dataspark.jobs.transformations.JoinJob
+        sideSource: home_work_info
+        mainKeyField: imsi_s
+        sideKeyField: imsi_s
+        outputField: customer_home_work
+        leftJoin: true
+                  
+      - !!com.dataspark.jobs.transformations.ProcessingJob
+        enrichers:
+          - !!com.dataspark.jobs.transformations.SimpleMapLookup
+            outputField: home_roi_layers
+            source: cell_roi_layers
+            inputField: customer_home_work.home_cell_s
+            
+          - !!com.dataspark.jobs.transformations.SimpleMapLookup
+            outputField: work_roi_layers
+            source: cell_roi_layers
+            inputField: customer_home_work.work_cell_s
+            
+          - !!com.dataspark.jobs.transformations.FieldCopy
+            fields: 
+            - [home_roi_layers.submtz_id, home_submtz_id]
+            - [home_roi_layers.subzone_id, home_subzone_id]
+            - [home_roi_layers.planning_area_id, home_planning_area_id]
+            - [home_roi_layers.planning_region_id, home_planning_region_id]
+            - [home_roi_layers.site_id_s, home_site_id_s]
+            - [work_roi_layers.submtz_id, work_submtz_id]
+            - [work_roi_layers.subzone_id, work_subzone_id]
+            - [work_roi_layers.planning_area_id, work_planning_area_id]
+            - [work_roi_layers.planning_region_id, work_planning_region_id]
+            - [work_roi_layers.site_id_s, work_site_id_s]
+
+      - !!com.dataspark.jobs.transformations.ValueEncodingJob
+        stopOnError: false
+        reportErrors: true
+        name: 
+        encoder: !!com.dataspark.codecs.MapEncoder
+          fields:
+            - !!com.dataspark.codecs.Field
+              name: imsi_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+                
+            - !!com.dataspark.codecs.Field
+              name: home_submtz_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: home_subzone_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: home_planning_area_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+            
+            - !!com.dataspark.codecs.Field
+              name: home_planning_region_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: home_site_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: work_submtz_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: work_subzone_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: work_planning_area_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+            
+            - !!com.dataspark.codecs.Field
+              name: work_planning_region_id
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: work_site_id_s
+              encoder: !!com.dataspark.codecs.StringEncoder {}
+              
+            - !!com.dataspark.codecs.Field
+              name: tot_amt_d
+              encoder: !!com.dataspark.codecs.DoubleEncoder {}
+              
+          inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+            delimiter: '|'
+            
+      - !!com.dataspark.jobs.outputs.TextFileOutputJob
+        uri: !arg enriched_customer_profile
+        consoleOutput: false          

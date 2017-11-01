@@ -1,0 +1,193 @@
+# ds_transform_cell_master using Cell Master Information
+# author: ashutosh
+
+# application name
+name: ds_transform_cell_master
+
+# input arguments
+arguments:
+    - !argument
+        name: input_path
+        description:
+        required: true
+
+    - !argument
+        name: output_path
+        description:
+        required: true
+        
+# data source
+source:
+    !!com.dataspark.sources.TextFileSource
+        uri: !arg input_path
+
+# main processing jobs
+job:
+    !!com.dataspark.jobs.composite.RDDPipelineJob
+        pipeline:
+            # decode source data line by line
+            - !!com.dataspark.jobs.transformations.ValueDecodingJob
+                decoder: !!com.dataspark.codecs.DelimitedRecordStringDecoder
+                    delimiter: '\|'
+                    inner: !!com.dataspark.codecs.MapDecoder
+                        fields:
+                            - !!com.dataspark.codecs.Field
+                                name: cgi
+                                index: 0
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: lat
+                                index: 1
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true
+                            - !!com.dataspark.codecs.Field
+                                name: lon
+                                index: 2
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true
+                            - !!com.dataspark.codecs.Field
+                                name: network
+                                index: 3
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: site_id
+                                index: 4
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: site_name
+                                index: 5
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi4_id
+                                index: 6
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi3_id
+                                index: 7
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi2_id
+                                index: 8
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true
+                            - !!com.dataspark.codecs.Field
+                                name: roi1_id
+                                index: 9
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true 
+                            - !!com.dataspark.codecs.Field
+                                name: province_id
+                                index: 10
+                                decoder: !!com.dataspark.codecs.StringDecoder
+                                    nullable: true
+                                    trim: true                                                                                                           
+                            - !!com.dataspark.codecs.Field
+                                name: vol_2g
+                                index: 11
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true
+                            - !!com.dataspark.codecs.Field
+                                name: vol_3g
+                                index: 12
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true
+                            - !!com.dataspark.codecs.Field
+                                name: vol_4g
+                                index: 13
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true
+                            - !!com.dataspark.codecs.Field
+                                name: revenue
+                                index: 14
+                                decoder: !!com.dataspark.codecs.DoubleDecoder
+                                    nullable: true                                                                                                            
+                                    
+            # enrich/transform data
+            - !!com.dataspark.jobs.transformations.ProcessingJob
+                enrichers:
+                    - !!com.dataspark.jobs.transformations.FormattedStringEnricher
+                        inputFields: [lat, lon]
+                        outputField: lat_lon_s
+                        targetFormat: '%.5f_%.5f'                                                
+                        
+            - !!com.dataspark.jobs.transformations.GroupByKeyJob
+                keyField: lat_lon_s
+                partitions: 100
+
+            - !!com.dataspark.jobs.transformations.MergeAndFlattenMapJob
+                concatFields: [site_id,site_name]
+                separator: ", "
+                
+            - !!com.dataspark.jobs.transformations.ValueEncodingJob
+                encoder: !!com.dataspark.codecs.MapEncoder
+                    fields:
+                        - !!com.dataspark.codecs.Field
+                            name: cgi
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lat
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lon
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}                            
+                        - !!com.dataspark.codecs.Field
+                            name: network
+                            encoder: !!com.dataspark.codecs.StringEncoder {}                            
+                        - !!com.dataspark.codecs.Field
+                            name: site_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: site_name
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: roi4_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: roi3_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: roi2_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: roi1_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: province_id
+                            encoder: !!com.dataspark.codecs.StringEncoder {}                            
+                        - !!com.dataspark.codecs.Field
+                            name: vol_2g
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: vol_3g
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: vol_4g
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: revenue
+                            encoder: !!com.dataspark.codecs.DoubleEncoder {}
+                        - !!com.dataspark.codecs.Field
+                            name: lat_lon_s
+                            encoder: !!com.dataspark.codecs.StringEncoder {}
+
+                    inner: !!com.dataspark.codecs.DelimitedRecordStringEncoder
+                        delimiter: '|'                
+                
+            # write out to output path
+            - !!com.dataspark.jobs.outputs.TextFileOutputJob
+                uri: !arg output_path
+                consoleOutput: false

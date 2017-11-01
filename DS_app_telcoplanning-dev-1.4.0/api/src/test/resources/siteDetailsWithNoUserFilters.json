@@ -1,0 +1,87 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "home"
+    ],
+    "filterUser": null,
+    "filterDevice": {
+      "device_frequency_2g": [
+        "filter.deviceFrequency.2g.900"
+      ],
+      "device_frequency_3g": [
+        "filter.deviceFrequency.3g.900"
+      ],
+      "device_type": [
+        "filter.deviceType.smartphone",
+        "filter.deviceType.featurephone",
+        "filter.deviceType.basicphone"
+      ]
+    },
+    "filterCell": {
+      "cell_network": [
+        "filter.cellNetwork.4g",
+        "filter.cellNetwork.3g"
+      ]
+    },
+    "sites": null,
+    "order": [
+      "id",
+      "siteId",
+      "siteName",
+      "lat",
+      "lon",
+      "roiL1",
+      "roiL2",
+      "roiL3",
+      "roiL4",
+      "home",
+      "work",
+      "revenue",
+      "payload",
+      "sms",
+      "calls",
+      "unique_people",
+      "total_stay_duration",
+      "avg_stay_duration",
+      "vqi",
+      "congestion"
+    ]
+  },
+  "results": [
+    [
+      "4_4",
+      "site_4",
+      "site_4",
+      4.0,
+      4.0,
+      "JABODETABEK",
+      "3602",
+      "3603032",
+      "3603030012",
+      1,
+      null,
+      null,
+      null,
+      50.0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

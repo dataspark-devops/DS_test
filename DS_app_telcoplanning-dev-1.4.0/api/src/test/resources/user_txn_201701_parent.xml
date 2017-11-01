@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<add>
+  <doc>
+    <str name="id">msisdn_1</str>
+    <str name="msisdn_s">msisdn_1</str>
+    <str name="imsi_s">imsi_1</str>
+    <int name="segment_arpu_ti">1</int>
+    <int name="segment_los_ti">0</int>
+    <int name="segment_broadband_ti">0</int>
+    <int name="segment_loyalty_ti">1</int>
+    <int name="segment_unsupervised_ti">1</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">4171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">1_1</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">6_6</str>
+    <int name="device_type_ti">0</int>
+    <arr name="freq_bands_ss">
+      <str>2g.1800</str>
+      <str>2g.900</str>
+      <str>HSDPA</str>
+      <str>3g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_2</str>
+    <str name="msisdn_s">msisdn_2</str>
+    <str name="imsi_s">imsi_2</str>
+    <int name="segment_arpu_ti">2</int>
+    <int name="segment_los_ti">1</int>
+    <int name="segment_broadband_ti">1</int>
+    <int name="segment_loyalty_ti">2</int>
+    <int name="segment_unsupervised_ti">2</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">4171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">2_2</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">7_7</str>
+    <int name="device_type_ti">1</int>
+    <arr name="freq_bands_ss">
+      <str>2g.1800</str>
+      <str>3g.850</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_3</str>
+    <str name="msisdn_s">msisdn_3</str>
+    <str name="imsi_s">imsi_3</str>
+    <int name="segment_arpu_ti">3</int>
+    <int name="segment_los_ti">2</int>
+    <int name="segment_broadband_ti">2</int>
+    <int name="segment_loyalty_ti">3</int>
+    <int name="segment_unsupervised_ti">3</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">3_3</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">8_8</str>
+    <int name="device_type_ti">2</int>
+    <arr name="freq_bands_ss">
+      <str>2g.1800</str>
+      <str>2g.900</str>
+      <str>4g.700</str>
+      <str>4g.850</str>
+      <str>4g.900</str>
+    </arr>
+  </doc>
+
+
+  <doc>
+    <str name="id">msisdn_4</str>
+    <str name="msisdn_s">msisdn_4</str>
+    <str name="imsi_s">imsi_4</str>
+    <int name="segment_arpu_ti">4</int>
+    <int name="segment_los_ti">3</int>
+    <int name="segment_broadband_ti">3</int>
+    <int name="segment_loyalty_ti">4</int>
+    <int name="segment_unsupervised_ti">4</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">4_4</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">9_9</str>
+    <int name="device_type_ti">3</int>
+    <arr name="freq_bands_ss">
+      <str>2g.900</str>
+      <str>4g.700</str>
+      <str>3g.900</str>
+      <str>3g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_5</str>
+    <str name="msisdn_s">msisdn_5</str>
+    <str name="imsi_s">imsi_5</str>
+    <int name="segment_arpu_ti">5</int>
+    <int name="segment_los_ti">4</int>
+    <int name="segment_broadband_ti">4</int>
+    <int name="segment_loyalty_ti">1</int>
+    <int name="segment_unsupervised_ti">5</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">5_5</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">10_10</str>
+    <int name="device_type_ti">4</int>
+    <arr name="freq_bands_ss">
+      <str>2g.900</str>
+      <str>3g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_6</str>
+    <str name="msisdn_s">msisdn_6</str>
+    <str name="imsi_s">imsi_6</str>
+    <int name="segment_arpu_ti">6</int>
+    <int name="segment_los_ti">5</int>
+    <int name="segment_broadband_ti">5</int>
+    <int name="segment_loyalty_ti">2</int>
+    <int name="segment_unsupervised_ti">6</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">6_6</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">4671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">1_1</str>
+    <int name="device_type_ti">4</int>
+    <arr name="freq_bands_ss">
+      <str>3g.850</str>
+      <str>3g.900</str>
+      <str>3g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_7</str>
+    <str name="msisdn_s">msisdn_7</str>
+    <str name="imsi_s">imsi_7</str>
+    <int name="segment_arpu_ti">1</int>
+    <int name="segment_los_ti">6</int>
+    <int name="segment_broadband_ti">6</int>
+    <int name="segment_loyalty_ti">3</int>
+    <int name="segment_unsupervised_ti">7</int>
+    <double name="revenue_data_td">1000.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">7_7</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">4671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">2_2</str>
+    <int name="device_type_ti">4</int>
+    <arr name="freq_bands_ss">
+      <str>3g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_8</str>
+    <str name="msisdn_s">msisdn_8</str>
+    <str name="imsi_s">imsi_8</str>
+    <int name="segment_arpu_ti">2</int>
+    <int name="segment_los_ti">0</int>
+    <int name="segment_broadband_ti">7</int>
+    <int name="segment_loyalty_ti">4</int>
+    <int name="segment_unsupervised_ti">8</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">8_8</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">3_3</str>
+    <int name="device_type_ti">5</int>
+    <arr name="freq_bands_ss">
+      <str>3g.2100</str>
+      <str>4g.2300</str>
+    </arr>
+  </doc>
+
+
+  <doc>
+    <str name="id">msisdn_9</str>
+    <str name="msisdn_s">msisdn_9</str>
+    <str name="imsi_s">imsi_9</str>
+    <int name="segment_arpu_ti">3</int>
+    <int name="segment_los_ti">1</int>
+    <int name="segment_broadband_ti">8</int>
+    <int name="segment_loyalty_ti">1</int>
+    <int name="segment_unsupervised_ti">9</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">9_9</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">4_4</str>
+    <int name="device_type_ti">5</int>
+    <arr name="freq_bands_ss">
+      <str>3g.2100</str>
+      <str>4g.2100</str>
+    </arr>
+  </doc>
+
+  <doc>
+    <str name="id">msisdn_10</str>
+    <str name="msisdn_s">msisdn_10</str>
+    <str name="imsi_s">imsi_10</str>
+    <int name="segment_arpu_ti">4</int>
+    <int name="segment_los_ti">2</int>
+    <int name="segment_broadband_ti">9</int>
+    <int name="segment_loyalty_ti">1</int>
+    <int name="segment_unsupervised_ti">10</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">10_10</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">5_5</str>
+    <int name="device_type_ti">6</int>
+    <arr name="freq_bands_ss">
+      <str>2g.850</str>
+      <str>4g.1800</str>
+    </arr>
+  </doc>
+  
+  <doc>
+    <str name="id">msisdn_11</str>
+    <str name="msisdn_s">msisdn_11</str>
+    <str name="imsi_s">imsi_11</str>
+    <int name="segment_arpu_ti">4</int>
+    <int name="segment_los_ti">2</int>
+    <int name="segment_broadband_ti">9</int>
+    <int name="segment_loyalty_ti">1</int>
+    <int name="segment_unsupervised_ti">10</int>
+    <double name="revenue_data_td">0.0</double>
+    <double name="volume_data_td">3696.0</double>
+    <str name="home_roi1_id_s">JABODETABEK</str>
+    <str name="home_roi2_id_s">3171</str>
+    <str name="home_roi3_id_s">3171060</str>
+    <str name="home_roi4_id_s">3171060003</str>
+    <str name="home_site_id_s">10_10</str>
+    <str name="work_roi1_id_s">JABODETABEK</str>
+    <str name="work_roi2_id_s">3671</str>
+    <str name="work_roi3_id_s">3671011</str>
+    <str name="work_roi4_id_s">3671011008</str>
+    <str name="work_site_id_s">5_5</str>
+    <int name="device_type_ti">6</int>
+    <arr name="freq_bands_ss">
+      <str>2g.850</str>
+      <str>4g.1800</str>
+    </arr>
+  </doc>
+
+  <commit waitSearcher="false" />
+</add>

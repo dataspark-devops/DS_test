@@ -1,0 +1,66 @@
+{
+  "bbc": [
+    {
+      "id": "JABODETABEK",
+      "name": "JABODETABEK",
+      "kabupaten": [
+        {
+          "id": "3205",
+          "name": "GARUT",
+          "kecamatan": [
+            {
+              "id": "3302",
+              "name": "BANYUMAS",
+              "kelurahan": [
+                {
+                  "id": "3302190008",
+                  "name": "DAWUHAN KULON"
+                },
+                {
+                  "id": "3302190013",
+                  "name": "KUTALIMAN"
+                }
+              ]
+            },
+            {
+              "id": "4302",
+              "name": "BANGKAL",
+              "kelurahan": []
+            }
+          ]
+        },
+        {
+          "id": "3705",
+          "name": "SIDAYU",
+          "kecamatan": [{
+              "id": "43055",
+              "name": "SIDAYU_KECH",
+              "kelurahan": []
+            }]
+        }
+      ]
+    },
+    {
+      "id": "BANDUNG",
+      "name": "BANDUNG",
+      "kabupaten": [
+        {
+          "id": "3206",
+          "name": "BILATO",
+          "kecamatan": [
+            {
+              "id": "3303",
+              "name": "ILOMATA",
+              "kelurahan": [
+                {
+                  "id": "3302190009",
+                  "name": "TAULAA"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

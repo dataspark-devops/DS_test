@@ -1,0 +1,3 @@
+{
+  "results": "Exported 0 users for: \nROI: 3600\nSites: 1_1, 2_2, 3_3, 4_4, 5_5, 6_6, 7_7, 8_8, 9_9, 10_10\nPeriod type: week\nPeriod Range:\n\t2017-01-02T00:00:00+07:00 to 2017-01-09T00:00:00+07:00\n\nIMSI|MSISDN|Broadband Segment|ARPU Segment|LOS Segment|Loyalty Segment|Unsupervised Segment|Data Revenue|Data Volume|Device Type|Frequency Bands|Home BBC|Home Kabupaten|Home Kecamatan|Home Kelurahan|Home SiteId|Work BBC|Work Kabupaten|Work Kecamatan|Work Kelurahan|Work SiteId\n"
+}

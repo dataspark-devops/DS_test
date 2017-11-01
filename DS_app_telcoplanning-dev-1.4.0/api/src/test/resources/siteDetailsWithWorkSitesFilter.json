@@ -1,0 +1,96 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "home"
+    ],
+    "filterUser": {
+      "work_roiL3": [
+        "4671011"
+      ]
+    },
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": null,
+    "order": [
+      "id",
+      "siteId",
+      "siteName",
+      "lat",
+      "lon",
+      "roiL1",
+      "roiL2",
+      "roiL3",
+      "roiL4",
+      "home",
+      "work",
+      "revenue",
+      "payload",
+      "sms",
+      "calls",
+      "unique_people",
+      "total_stay_duration",
+      "avg_stay_duration",
+      "vqi",
+      "congestion"
+    ]
+  },
+  "results": [
+    [
+      "6_6",
+      "site_6",
+      "site_6",
+      6.0,
+      6.0,
+      "JABODETABEK",
+      "3602",
+      "3603032",
+      "3603030012",
+      1,
+      null,
+      null,
+      null,
+      87.0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      "7_7",
+      "site_7",
+      "site_7",
+      7.0,
+      7.0,
+      "JABODETABEK",
+      "3603",
+      "3603033",
+      "3603030013",
+      1,
+      null,
+      null,
+      null,
+      867.0,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ]
+}

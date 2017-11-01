@@ -1,0 +1,67 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL3": [
+        "3603032"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "calls",
+      "home"
+    ],
+    "filterUser": null,
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "3_3",
+      "4_4"
+    ]
+  },
+  "results": [
+    {
+      "roiL2": "3602",
+      "siteId": "site_3",
+      "siteName": "site_3",
+      "roiL3": "3603032",
+      "lon": 3.0,
+      "id": "3_3",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "calls": 610.0,
+          "cellId": "cell_31",
+          "network": "4G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 3.0,
+      "home": 1
+    },
+    {
+      "roiL2": "3602",
+      "siteId": "site_4",
+      "siteName": "site_4",
+      "roiL3": "3603032",
+      "lon": 4.0,
+      "id": "4_4",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "calls": 60.0,
+          "cellId": "cell_41",
+          "network": "2G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 4.0,
+      "home": 1
+    }
+  ]
+}

@@ -1,0 +1,71 @@
+{
+  "meta": {
+    "roiFilters": {
+      "roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "periodType": "week",
+    "periodRange": [
+      {
+        "startDate": "2017-01-02T00:00:00+07:00",
+        "endDate": "2017-01-09T00:00:00+07:00"
+      }
+    ],
+    "indicators": [
+      "sms",
+      "home"
+    ],
+    "filterUser": {
+      "work_roiL1": [
+        "JABODETABEK"
+      ]
+    },
+    "filterDevice": null,
+    "filterCell": null,
+    "sites": [
+      "6_6",
+      "7_7"
+    ]
+  },
+  "results": [
+    {
+      "roiL2": "3602",
+      "siteId": "site_6",
+      "siteName": "site_6",
+      "roiL3": "3603032",
+      "lon": 6.0,
+      "id": "6_6",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "sms": 87.0,
+          "cellId": "cell_61",
+          "network": "2G"
+        }
+      ],
+      "roiL4": "3603030012",
+      "lat": 6.0,
+      "home": 1
+    },
+    {
+      "roiL2": "3603",
+      "siteId": "site_7",
+      "siteName": "site_7",
+      "roiL3": "3603033",
+      "lon": 7.0,
+      "id": "7_7",
+      "roiL1": "JABODETABEK",
+      "cellStats": [
+        {
+          "sms": 867.0,
+          "cellId": "cell_71",
+          "network": "3G"
+        }
+      ],
+      "roiL4": "3603030013",
+      "lat": 7.0,
+      "home": 1
+    }
+  ]
+}

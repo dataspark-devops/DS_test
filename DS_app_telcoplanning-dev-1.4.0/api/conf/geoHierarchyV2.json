@@ -1,0 +1,13 @@
+{
+  "geoNodeType" : "ROI_LEVEL",
+  "geoNodeDepth" : "roiL0",
+  "displayType" : "STATS",
+  "aggregatableAt" : "roiL1",
+  "children" : [ {
+    "geoNodeType" : "ROI_VALUE",
+    "geoNodeDepth" : "roiL1",
+    "displayType" : "STATS",
+    "aggregatableAt" : "roiL2",
+    "children" : null
+  } ]
+}
